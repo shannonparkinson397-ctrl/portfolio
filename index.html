@@ -13,6 +13,7 @@
     <meta property="og:image" content="https://bogdan-lab.ru/og-image.jpg">
     <meta property="og:url" content="https://bogdan-lab.ru">
     <meta name="twitter:card" content="summary_large_image">
+    <link rel="canonical" href="https://bogdan-lab.ru/">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -106,6 +107,27 @@
             border-color: var(--accent);
         }
     </style>
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"Person",
+      "name":"Bogdan",
+      "url":"https://bogdan-lab.ru/",
+      "jobTitle":"QA Automation & DevOps Engineer",
+      "sameAs":["https://t.me/bogdan_sys"],
+      "knowsAbout":["QA Automation","AI Automation","DevOps","Agentic Infrastructure"]
+    }
+    </script>
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"ProfessionalService",
+      "name":"Bogdan Lab",
+      "url":"https://bogdan-lab.ru/",
+      "areaServed":"Remote",
+      "serviceType":"AI automation and DevOps infrastructure"
+    }
+    </script>
 </head>
 <body class="antialiased">
     <!-- simplified background, removed scanline and heavy glow -->
@@ -139,6 +161,7 @@
                     <h2 class="text-2xl md:text-3xl font-semibold text-neutral-200 mb-6">
                         Строю агентную инфраструктуру вместо десятков сотрудников.
                     </h2>
+                    <p class="mono text-xs text-emerald-400 uppercase tracking-widest">Минус 20–40 часов ручной рутины в месяц • MVP AI-автоматизации за 7–14 дней</p>
                     <p class="text-xl text-neutral-400 max-w-lg leading-relaxed">
                         Я инженер QA/DevOps, который собирает для бизнеса автономную ИИ-инфраструктуру: от пайплайнов и ботов до агентов, которые берут на себя рутину и приносят деньги, пока вы спите.
                     </p>
@@ -151,20 +174,25 @@
                     <h2 class="text-2xl md:text-3xl font-semibold text-neutral-200 mb-6">
                         I build agentic infrastructure instead of hiring more people.
                     </h2>
+                    <p class="mono text-xs text-emerald-400 uppercase tracking-widest">20–40 manual hours/month removed • AI automation MVP in 7–14 days</p>
                     <p class="text-xl text-neutral-400 max-w-lg leading-relaxed">
                         I’m a QA Automation & DevOps engineer who designs and deploys agentic infrastructure: pipelines, bots and autonomous systems that handle the busywork and create value while you sleep.
                     </p>
                 </div>
                 
                 <div class="flex flex-wrap gap-4 pt-4">
-                    <a href="https://t.me/bogdan_sys" class="bg-emerald-500 text-black font-bold px-10 py-5 rounded-xl hover:scale-105 transition-transform shadow-xl shadow-emerald-500/20">
+                    <a href="https://t.me/bogdan_sys" data-track="cta_telegram" class="bg-emerald-500 text-black font-bold px-10 py-5 rounded-xl hover:scale-105 transition-transform shadow-xl shadow-emerald-500/20">
                         <span data-lang="ru">Запустить Агента</span>
                         <span data-lang="en">Deploy Agent</span>
                     </a>
-                    <button class="border border-neutral-800 text-neutral-300 font-semibold px-10 py-5 rounded-xl hover:bg-neutral-900 transition-colors">
+                    <a href="#proof" data-track="cta_cases" class="border border-neutral-800 text-neutral-300 font-semibold px-10 py-5 rounded-xl hover:bg-neutral-900 transition-colors">
                         <span data-lang="ru">Кейсы</span>
                         <span data-lang="en">View Case Studies</span>
-                    </button>
+                    </a>
+                    <a href="#brief" data-track="cta_brief" class="glass-btn">
+                        <span data-lang="ru">Запросить аудит процессов</span>
+                        <span data-lang="en">Request Process Audit</span>
+                    </a>
                 </div>
             </div>
             
@@ -264,6 +292,42 @@
             </div>
         </section>
 
+        <!-- Proof / Case Studies -->
+        <section id="proof" class="mb-40">
+            <div class="text-center mb-16 space-y-3">
+                <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white">Proof: QA Automation + AI Automation + DevOps</h2>
+                <p class="text-neutral-500 mono text-xs uppercase tracking-widest">Problem → Solution → Measurable Result</p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="card-blur p-8 rounded-2xl">
+                    <h3 class="text-lg font-semibold mb-3">Whale Alert Sniper</h3>
+                    <p class="text-neutral-400 text-sm">Проблема: ручной мониторинг рынка и запоздалые сигналы.<br>Решение: автономный агент с событиями и фильтрацией.<br><span class="text-emerald-400">Результат: сигналы приходят автоматически 24/7.</span></p>
+                </div>
+                <div class="card-blur p-8 rounded-2xl">
+                    <h3 class="text-lg font-semibold mb-3">Bounty Monitor</h3>
+                    <p class="text-neutral-400 text-sm">Проблема: потеря времени на низкооплачиваемые задачи.<br>Решение: сканер Algora/Bountycaster/Moltbook с фильтром payout.<br><span class="text-emerald-400">Результат: фокус только на high-ticket задачах.</span></p>
+                </div>
+                <div class="card-blur p-8 rounded-2xl">
+                    <h3 class="text-lg font-semibold mb-3">Robik Ops Assistant</h3>
+                    <p class="text-neutral-400 text-sm">Проблема: операционная рутина и переключение контекста.<br>Решение: оркестрация OpenClaw + Codex/Gemini/Ollama + cron.<br><span class="text-emerald-400">Результат: 20–40 часов рутины/мес уходят в автоматизацию.</span></p>
+                </div>
+            </div>
+            <div class="mt-8 text-sm text-neutral-500">Stack: OpenClaw, Playwright, Docker, CI/CD, Python, Node.js.</div>
+        </section>
+
+        <!-- Brief Form -->
+        <section id="brief" class="mb-32">
+            <div class="card-blur rounded-3xl p-8 md:p-10">
+                <h2 class="text-3xl font-bold mb-6">Быстрый бриф на автоматизацию</h2>
+                <form class="grid md:grid-cols-3 gap-4" action="https://t.me/bogdan_sys" method="get" target="_blank">
+                    <input name="process" required placeholder="Какой процесс автоматизируем?" class="bg-black/40 border border-neutral-800 rounded-xl px-4 py-3 text-sm">
+                    <input name="volume" required placeholder="Объём ручной работы (часов/нед)" class="bg-black/40 border border-neutral-800 rounded-xl px-4 py-3 text-sm">
+                    <input name="goal" required placeholder="Цель (экономия/лиды/скорость)" class="bg-black/40 border border-neutral-800 rounded-xl px-4 py-3 text-sm">
+                    <button data-track="brief_submit" class="md:col-span-3 bg-emerald-500 text-black font-bold px-6 py-4 rounded-xl">Отправить бриф в Telegram</button>
+                </form>
+            </div>
+        </section>
+
         <!-- Current Focus -->
         <section class="mb-40 space-y-6">
             <h2 class="text-3xl font-bold italic text-white tracking-tighter uppercase opacity-50">Now</h2>
@@ -324,10 +388,20 @@
             }
         }
 
+        function track(eventName) {
+            try {
+                window.dataLayer = window.dataLayer || [];
+                window.dataLayer.push({ event: eventName, ts: Date.now() });
+            } catch (e) {}
+        }
+
         // Initialize view
         document.addEventListener('DOMContentLoaded', () => {
             document.querySelectorAll('[data-lang="en"]').forEach(el => el.style.display = 'none');
             setTimeout(typeWriter, 1200);
+            document.querySelectorAll('[data-track]').forEach(el => {
+                el.addEventListener('click', () => track(el.getAttribute('data-track')));
+            });
         });
     </script>
 </body>
