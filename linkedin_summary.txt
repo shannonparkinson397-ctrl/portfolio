@@ -1,0 +1,11 @@
+Senior AI Solutions Architect | Enterprise Automation & LLM Orchestration
+
+Expert in building autonomous multi-agent systems using OpenClaw stack and SOTA models (Gemini 1.5 Pro, Claude 3.5). 
+Helping businesses scale through custom RAG architectures and high-performance automation.
+
+Key achievements:
+- Reduced data processing latency by 85% for fintech clients.
+- Automated B2B lead generation networks increasing qualified leads by 40%.
+- Engineered resilient real-time monitoring systems with 99.9% uptime.
+
+Looking for challenging roles in Moscow/Remote to lead the AI transformation.

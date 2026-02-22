@@ -1,0 +1,334 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bogdan Lab | Agentic Infrastructure</title>
+    
+    <!-- SEO & Social Media -->
+    <meta name="description" content="Создание и внедрение автономных ИИ-агентов для бизнеса. Автоматизация продаж, аналитика и глубокий ресерч.">
+    <meta property="og:title" content="Bogdan Lab | AI Agent Architect">
+    <meta property="og:description" content="Будущее автоматизации здесь. Нанимайте ИИ, а не людей.">
+    <meta property="og:image" content="https://bogdan-lab.ru/og-image.jpg">
+    <meta property="og:url" content="https://bogdan-lab.ru">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #050505;
+            --text: #e5e5e5;
+            --accent: #34d399; /* softer emerald */
+            --secondary: #737373;
+            --card: #0c0c0c;
+        }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Space Grotesk', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
+        }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        .gradient-text {
+            background: linear-gradient(90deg, var(--accent), #0099ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .scanline {
+            width: 100%;
+            height: 100px;
+            z-index: 10;
+            background: linear-gradient(0deg, rgba(0, 212, 170, 0) 0%, rgba(0, 212, 170, 0.05) 50%, rgba(0, 212, 170, 0) 100%);
+            opacity: 0.1;
+            position: fixed;
+            bottom: 100%;
+            animation: scanline 8s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes scanline {
+            0% { bottom: 100%; }
+            100% { bottom: -100px; }
+        }
+        .card-blur {
+            background: rgba(12, 12, 12, 0.9);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: all 0.2s ease-out;
+        }
+        .card-blur:hover {
+            border-color: rgba(52, 211, 153, 0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.55);
+        }
+        .terminal {
+            background: #050505;
+            border: 1px solid #202020;
+            box-shadow: 0 24px 40px rgba(0,0,0,0.7);
+        }
+        .cursor-blink {
+            display: inline-block;
+            width: 8px;
+            height: 18px;
+            background: var(--accent);
+            animation: blink 1s step-end infinite;
+            vertical-align: middle;
+        }
+        @keyframes blink { 50% { opacity: 0; } }
+        
+        .lang-switch {
+            background: #111;
+            border: 1px solid #222;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: var(--secondary);
+            transition: all 0.2s;
+        }
+        .lang-switch:hover { border-color: var(--accent); color: var(--accent); }
+        
+        [data-lang="en"] { display: none; }
+        
+        .glass-btn {
+            background: rgba(0, 212, 170, 0.1);
+            border: 1px solid rgba(0, 212, 170, 0.2);
+            color: var(--accent);
+            padding: 12px 24px;
+            border-radius: 12px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .glass-btn:hover {
+            background: rgba(0, 212, 170, 0.2);
+            border-color: var(--accent);
+        }
+    </style>
+</head>
+<body class="antialiased">
+    <!-- simplified background, removed scanline and heavy glow -->
+    <div class="fixed inset-0 pointer-events-none overflow-hidden -z-10">
+        <div class="absolute top-[-20%] left-[-20%] w-[60%] h-[60%] bg-emerald-900/5 rounded-full blur-[180px]"></div>
+        <div class="absolute bottom-[-20%] right-[-20%] w-[60%] h-[60%] bg-blue-900/5 rounded-full blur-[180px]"></div>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-6">
+        <!-- Navigation -->
+        <header class="flex justify-between items-center py-10">
+            <div class="text-2xl font-bold tracking-tighter italic text-white">BOGDAN<span class="text-emerald-400">.LAB</span></div>
+            <div class="flex items-center gap-6">
+                <nav class="hidden md:flex gap-8 text-[10px] mono uppercase tracking-widest text-neutral-500">
+                    <a href="#infra" class="hover:text-emerald-400 transition-colors">Infrastructure</a>
+                    <a href="#markets" class="hover:text-emerald-400 transition-colors">Markets</a>
+                    <a href="#agents" class="hover:text-emerald-400 transition-colors">Agents</a>
+                </nav>
+                <button class="lang-switch mono" onclick="toggleLang()" id="langBtn">RU / EN</button>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="grid lg:grid-cols-2 gap-16 items-center py-20">
+            <div class="space-y-8">
+                <div data-lang="ru">
+                    <span class="mono text-xs text-emerald-500 mb-4 block uppercase tracking-tighter">Статус системы: Оптимальный // Фев 2026</span>
+                    <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6 tracking-tight text-white">
+                        Богдан — QA Automation & DevOps.
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold text-neutral-200 mb-6">
+                        Строю агентную инфраструктуру вместо десятков сотрудников.
+                    </h2>
+                    <p class="text-xl text-neutral-400 max-w-lg leading-relaxed">
+                        Я инженер QA/DevOps, который собирает для бизнеса автономную ИИ-инфраструктуру: от пайплайнов и ботов до агентов, которые берут на себя рутину и приносят деньги, пока вы спите.
+                    </p>
+                </div>
+                <div data-lang="en">
+                    <span class="mono text-xs text-emerald-500 mb-4 block uppercase tracking-tighter">System Status: Optimal // Feb 2026</span>
+                    <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6 tracking-tight text-white">
+                        Bogdan — QA Automation & DevOps.
+                    </h1>
+                    <h2 class="text-2xl md:text-3xl font-semibold text-neutral-200 mb-6">
+                        I build agentic infrastructure instead of hiring more people.
+                    </h2>
+                    <p class="text-xl text-neutral-400 max-w-lg leading-relaxed">
+                        I’m a QA Automation & DevOps engineer who designs and deploys agentic infrastructure: pipelines, bots and autonomous systems that handle the busywork and create value while you sleep.
+                    </p>
+                </div>
+                
+                <div class="flex flex-wrap gap-4 pt-4">
+                    <a href="https://t.me/bogdan_sys" class="bg-emerald-500 text-black font-bold px-10 py-5 rounded-xl hover:scale-105 transition-transform shadow-xl shadow-emerald-500/20">
+                        <span data-lang="ru">Запустить Агента</span>
+                        <span data-lang="en">Deploy Agent</span>
+                    </a>
+                    <button class="border border-neutral-800 text-neutral-300 font-semibold px-10 py-5 rounded-xl hover:bg-neutral-900 transition-colors">
+                        <span data-lang="ru">Кейсы</span>
+                        <span data-lang="en">View Case Studies</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Terminal / Robik Interface -->
+            <div class="terminal rounded-2xl overflow-hidden border border-neutral-800/50 relative">
+                <div class="absolute inset-0 bg-gradient-to-tr from-emerald-500/5 to-transparent pointer-events-none"></div>
+                <div class="bg-[#111] px-5 py-3 flex justify-between items-center border-b border-neutral-800">
+                    <div class="flex gap-2">
+                        <div class="w-3 h-3 rounded-full bg-red-500/30"></div>
+                        <div class="w-3 h-3 rounded-full bg-yellow-500/30"></div>
+                        <div class="w-3 h-3 rounded-full bg-green-500/30"></div>
+                    </div>
+                    <div class="text-[10px] mono text-neutral-600 tracking-tighter uppercase">robik@agent-core: ~/moltbook-hunter</div>
+                </div>
+                <div class="p-8 mono text-xs md:text-sm leading-relaxed min-h-[340px] space-y-3">
+                    <div class="text-emerald-500/80 italic"># Initialize Robik Core v4.6...</div>
+                    <div class="text-neutral-500">[2026-02-16 14:21] Scanning Moltbook for opportunities...</div>
+                    <div class="text-neutral-400">> Found: <span class="text-emerald-400 font-bold">[REQUEST]</span> AI Infra Architect (High Priority)</div>
+                    <div class="text-blue-400/80">> Analyzing bid strategy... DONE.</div>
+                    <div class="pt-4 pb-2 border-t border-neutral-900">
+                        <span class="text-emerald-400 font-bold">Robik:</span> 
+                        <span class="text-neutral-200">"Привет, Богдан! Я зафиксировал 12 активных узлов и перехватил новый заказ на автоматизацию. Ожидаю подтверждения для отправки оффера."</span>
+                    </div>
+                    <div class="inline-block pt-2">
+                        <span class="text-emerald-500">$</span> <span id="type-text"></span><span class="cursor-blink"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Stats -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-32">
+            <div class="card-blur p-10 rounded-3xl">
+                <div class="text-[10px] mono text-neutral-500 mb-3 uppercase tracking-widest italic">Systems Built</div>
+                <div class="text-5xl font-bold text-white tracking-tighter">4</div>
+            </div>
+            <div class="card-blur p-10 rounded-3xl border-emerald-500/20">
+                <div class="text-[10px] mono text-neutral-500 mb-3 uppercase tracking-widest italic">Agentic Stack</div>
+                <div class="text-5xl font-bold text-emerald-400 tracking-tighter">OpenClaw</div>
+            </div>
+            <div class="card-blur p-10 rounded-3xl">
+                <div class="text-[10px] mono text-neutral-500 mb-3 uppercase tracking-widest italic">Years in QA/DevOps</div>
+                <div class="text-5xl font-bold text-white tracking-tighter">3–6</div>
+            </div>
+            <div class="card-blur p-10 rounded-3xl">
+                <div class="text-[10px] mono text-neutral-500 mb-3 uppercase tracking-widest italic">Active Projects</div>
+                <div class="text-5xl font-bold text-white tracking-tighter">Sniper · Bounty · Bot</div>
+            </div>
+        </div>
+
+        <!-- Capabilities Grid -->
+        <section id="infra" class="mb-40">
+            <div class="text-center mb-20 space-y-4">
+                <h2 class="text-4xl md:text-6xl font-bold italic tracking-tighter text-white">Systems I’ve Built</h2>
+                <p class="text-neutral-500 mono text-sm uppercase tracking-widest">Real infrastructure, not slideware</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="group relative p-px rounded-3xl bg-neutral-800 hover:bg-gradient-to-br hover:from-emerald-500/50 hover:to-blue-500/50 transition-all duration-500">
+                    <div class="relative bg-[#080808] p-10 rounded-[calc(1.5rem-1px)] h-full space-y-6">
+                        <div class="w-14 h-14 bg-neutral-900 rounded-2xl flex items-center justify-center text-2xl">🌩️</div>
+                        <h3 class="text-2xl font-bold text-white tracking-tight">Sniper Bot</h3>
+                        <div data-lang="ru">
+                            <p class="text-neutral-500 text-sm leading-relaxed">Крипто-агент, который отслеживает движения Satoshi-кошельков и крупные on-chain события. Используется как радар рисков и возможностей.</p>
+                        </div>
+                        <div data-lang="en">
+                            <p class="text-neutral-500 text-sm leading-relaxed">Crypto monitoring agent that tracks Satoshi-era wallets and large on-chain moves. Acts as a radar for market risks and opportunities.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group relative p-px rounded-3xl bg-neutral-800 hover:bg-gradient-to-br hover:from-blue-500/50 hover:to-purple-500/50 transition-all duration-500">
+                    <div class="relative bg-[#080808] p-10 rounded-[calc(1.5rem-1px)] h-full space-y-6">
+                        <div class="w-14 h-14 bg-neutral-900 rounded-2xl flex items-center justify-center text-2xl">📉</div>
+                        <h3 class="text-2xl font-bold text-white tracking-tight">Bounty Monitor</h3>
+                        <div data-lang="ru">
+                            <p class="text-neutral-500 text-sm leading-relaxed">Система, которая сканирует Algora, Bountycaster и Moltbook, отбирает задачи c payout &gt; $200 по QA/DevOps/Agentic и предлагает стратегию закрытия.</p>
+                        </div>
+                        <div data-lang="en">
+                            <p class="text-neutral-500 text-sm leading-relaxed">A monitoring system that scans Algora, Bountycaster and Moltbook, filters bounties &gt; $200 in QA/DevOps/Agentic and suggests closing strategies.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="group relative p-px rounded-3xl bg-neutral-800 hover:bg-gradient-to-br hover:from-amber-500/50 hover:to-red-500/50 transition-all duration-500">
+                    <div class="relative bg-[#080808] p-10 rounded-[calc(1.5rem-1px)] h-full space-y-6">
+                        <div class="w-14 h-14 bg-neutral-900 rounded-2xl flex items-center justify-center text-2xl">🛡️</div>
+                        <h3 class="text-2xl font-bold text-white tracking-tight">Universal Bot</h3>
+                        <div data-lang="ru">
+                            <p class="text-neutral-500 text-sm leading-relaxed">Личный OpenClaw-бот (Robik), который управляет моделями Codex, Gemini и локальной Ollama, оркестрирует браузер, shell и cron-задачи на твоём сервере.</p>
+                        </div>
+                        <div data-lang="en">
+                            <p class="text-neutral-500 text-sm leading-relaxed">Personal OpenClaw bot (Robik) that orchestrates Codex, Gemini and local Ollama models, controls browser, shell and cron jobs on your server.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Current Focus -->
+        <section class="mb-40 space-y-6">
+            <h2 class="text-3xl font-bold italic text-white tracking-tighter uppercase opacity-50">Now</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="border-l-2 border-emerald-500 pl-8 py-4">
+                    <div class="text-[10px] mono text-emerald-500 uppercase font-bold mb-2">Remote Work</div>
+                    <p class="text-neutral-500 text-sm max-w-xl">Ищу remote-позицию QA Automation / DevOps Engineer (160–250k₽) с фокусом на пайплайны, тестовую инфраструктуру и интеграцию ИИ-агентов.</p>
+                </div>
+                <div class="border-l-2 border-neutral-800 pl-8 py-4">
+                    <div class="text-[10px] mono text-neutral-500 uppercase font-bold mb-2">Bounties</div>
+                    <p class="text-neutral-500 text-sm max-w-xl">Хантинг задач &gt; $200 на Algora, Bountycaster и Moltbook в доменах QA, DevOps и agentic tooling.</p>
+                </div>
+                <div class="border-l-2 border-neutral-800 pl-8 py-4">
+                    <div class="text-[10px] mono text-neutral-500 uppercase font-bold mb-2">Agents</div>
+                    <p class="text-neutral-500 text-sm max-w-xl">Прокачиваю Robik как полноценного операционного ассистента: почта, вакансии, ресёрч, мониторинг инфраструктуры.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="py-20 border-t border-neutral-900 flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-neutral-600 text-[10px] mono uppercase tracking-widest">
+                © 2026 BOGDAN LAB // BUILT WITH OPENCLAW + CODEX
+            </div>
+            <div class="flex gap-10 text-[10px] mono uppercase tracking-widest text-neutral-400">
+                <a href="https://github.com/bogdan" class="hover:text-emerald-400 transition-colors">GitHub</a>
+                <a href="#" class="hover:text-emerald-400 transition-colors">Moltbook</a>
+                <a href="https://t.me/bogdan_sys" class="hover:text-emerald-400 transition-colors">Telegram</a>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Floating Initialize Button (Mobile Only) -->
+    <div class="fixed bottom-8 right-8 lg:hidden">
+        <a href="https://t.me/bogdan_sys" class="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center shadow-2xl shadow-emerald-500/40">
+            <span class="text-2xl">💬</span>
+        </a>
+    </div>
+
+    <script>
+        let currentLang = 'ru';
+        const typedText = "npm run start-hunter --mode aggressive";
+        let charIndex = 0;
+
+        function toggleLang() {
+            currentLang = currentLang === 'ru' ? 'en' : 'ru';
+            document.querySelectorAll('[data-lang="ru"]').forEach(el => el.style.display = currentLang === 'ru' ? 'block' : 'none');
+            document.querySelectorAll('[data-lang="en"]').forEach(el => el.style.display = currentLang === 'en' ? 'block' : 'none');
+            document.getElementById('langBtn').innerText = currentLang === 'ru' ? 'RU / EN' : 'EN / RU';
+        }
+
+        function typeWriter() {
+            const el = document.getElementById("type-text");
+            if (el && charIndex < typedText.length) {
+                el.innerHTML += typedText.charAt(charIndex);
+                charIndex++;
+                setTimeout(typeWriter, 60);
+            }
+        }
+
+        // Initialize view
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('[data-lang="en"]').forEach(el => el.style.display = 'none');
+            setTimeout(typeWriter, 1200);
+        });
+    </script>
+</body>
+</html>
