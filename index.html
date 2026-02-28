@@ -1,408 +1,331 @@
-
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bogdan Lab | Agentic Infrastructure</title>
-    
-    <!-- SEO & Social Media -->
-    <meta name="description" content="Создание и внедрение автономных ИИ-агентов для бизнеса. Автоматизация продаж, аналитика и глубокий ресерч.">
-    <meta property="og:title" content="Bogdan Lab | AI Agent Architect">
-    <meta property="og:description" content="Будущее автоматизации здесь. Нанимайте ИИ, а не людей.">
-    <meta property="og:image" content="https://bogdan-lab.ru/og-image.jpg">
-    <meta property="og:url" content="https://bogdan-lab.ru">
-    <meta name="twitter:card" content="summary_large_image">
-    <link rel="canonical" href="https://bogdan-lab.ru/">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bogdan Lab — Operator-Grade AI Infrastructure</title>
+  <meta name="description" content="Не инфобиз-лендинг. Операторская сборка AI-инфраструктуры: QA/DevOps/Agent workflows с измеримыми KPI и быстрым запуском." />
+  <meta property="og:title" content="Bogdan Lab — Operator-Grade AI Infrastructure" />
+  <meta property="og:description" content="Собираю AI-инфраструктуру под бизнес: от хаоса в процессах к метрикам и контролю." />
+  <meta property="og:url" content="https://bogdan-lab.ru/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Bogdan Lab" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Bogdan Lab — Operator-Grade AI Infrastructure" />
+  <meta name="twitter:description" content="AI-инфраструктура под бизнес: QA/DevOps automation, агентные процессы, KPI и контроль." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://bogdan-lab.ru/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #070b14;
+      --bg2: #0c1426;
+      --card: #0f1a30;
+      --line: #1e2c4d;
+      --text: #e9f0ff;
+      --muted: #9fb0d2;
+      --accent: #67f0b1;
+      --accent2: #7dc4ff;
+      --warn: #ffcf6e;
+    }
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --bg: #050505;
-            --text: #e5e5e5;
-            --accent: #34d399; /* softer emerald */
-            --secondary: #737373;
-            --card: #0c0c0c;
-        }
-        body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Space Grotesk', sans-serif;
-            margin: 0;
-            overflow-x: hidden;
-        }
-        .mono { font-family: 'JetBrains Mono', monospace; }
-        .gradient-text {
-            background: linear-gradient(90deg, var(--accent), #0099ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .scanline {
-            width: 100%;
-            height: 100px;
-            z-index: 10;
-            background: linear-gradient(0deg, rgba(0, 212, 170, 0) 0%, rgba(0, 212, 170, 0.05) 50%, rgba(0, 212, 170, 0) 100%);
-            opacity: 0.1;
-            position: fixed;
-            bottom: 100%;
-            animation: scanline 8s linear infinite;
-            pointer-events: none;
-        }
-        @keyframes scanline {
-            0% { bottom: 100%; }
-            100% { bottom: -100px; }
-        }
-        .card-blur {
-            background: rgba(12, 12, 12, 0.9);
-            backdrop-filter: blur(6px);
-            border: 1px solid rgba(255, 255, 255, 0.03);
-            transition: all 0.2s ease-out;
-        }
-        .card-blur:hover {
-            border-color: rgba(52, 211, 153, 0.6);
-            transform: translateY(-2px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.55);
-        }
-        .terminal {
-            background: #050505;
-            border: 1px solid #202020;
-            box-shadow: 0 24px 40px rgba(0,0,0,0.7);
-        }
-        .cursor-blink {
-            display: inline-block;
-            width: 8px;
-            height: 18px;
-            background: var(--accent);
-            animation: blink 1s step-end infinite;
-            vertical-align: middle;
-        }
-        @keyframes blink { 50% { opacity: 0; } }
-        
-        .lang-switch {
-            background: #111;
-            border: 1px solid #222;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: var(--secondary);
-            transition: all 0.2s;
-        }
-        .lang-switch:hover { border-color: var(--accent); color: var(--accent); }
-        
-        [data-lang="en"] { display: none; }
-        
-        .glass-btn {
-            background: rgba(0, 212, 170, 0.1);
-            border: 1px solid rgba(0, 212, 170, 0.2);
-            color: var(--accent);
-            padding: 12px 24px;
-            border-radius: 12px;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-        .glass-btn:hover {
-            background: rgba(0, 212, 170, 0.2);
-            border-color: var(--accent);
-        }
-    </style>
-    <script type="application/ld+json">
-    {
-      "@context":"https://schema.org",
-      "@type":"Person",
-      "name":"Bogdan",
-      "url":"https://bogdan-lab.ru/",
-      "jobTitle":"QA Automation & DevOps Engineer",
-      "sameAs":["https://t.me/bogdan_sys"],
-      "knowsAbout":["QA Automation","AI Automation","DevOps","Agentic Infrastructure"]
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+      background: radial-gradient(1200px 700px at 80% -20%, #17305b66 0%, transparent 60%),
+                  radial-gradient(900px 500px at -10% 10%, #1b5b4a55 0%, transparent 55%),
+                  linear-gradient(180deg, var(--bg) 0%, #060910 100%);
+      color: var(--text);
     }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context":"https://schema.org",
-      "@type":"ProfessionalService",
-      "name":"Bogdan Lab",
-      "url":"https://bogdan-lab.ru/",
-      "areaServed":"Remote",
-      "serviceType":"AI automation and DevOps infrastructure"
+    .mono { font-family: "JetBrains Mono", monospace; }
+    .wrap { width: min(1160px, 92vw); margin: 0 auto; }
+
+    .topbar {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 22px 0;
     }
-    </script>
+    .logo { font-weight: 800; letter-spacing: .4px; }
+    .logo span { color: var(--accent); }
+    .status-pill {
+      border: 1px solid #2b3d64; border-radius: 999px; padding: 8px 12px;
+      color: var(--muted); font-size: 12px;
+      background: #0b1223aa;
+    }
+
+    .hero {
+      display: grid; grid-template-columns: 1.1fr .9fr; gap: 24px;
+      padding: 26px 0 18px;
+    }
+    .panel {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, #0e172c, #0b1324);
+      border-radius: 18px;
+      box-shadow: 0 12px 28px #00000055;
+    }
+    .hero-main { padding: 30px; }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 1.04;
+      letter-spacing: -1px;
+    }
+    .lead {
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.55;
+      max-width: 690px;
+    }
+    .kpi-row {
+      display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top: 22px;
+    }
+    .kpi {
+      border: 1px solid #273a60; border-radius: 12px; padding: 14px;
+      background: #0a1222;
+    }
+    .kpi b { font-size: 22px; display:block; margin-bottom: 4px; }
+    .kpi small { color: var(--muted); }
+
+    .cta-row { display:flex; flex-wrap: wrap; gap: 12px; margin-top: 22px; }
+    .btn {
+      border: 1px solid #2f446f; color: #d5e7ff; text-decoration: none;
+      padding: 12px 16px; border-radius: 11px; font-weight: 600; font-size: 14px;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #0b1324;
+    }
+    .btn-primary {
+      background: linear-gradient(90deg, #67f0b1 0%, #8fcbff 100%);
+      color: #041018; border: 0;
+    }
+
+    .hero-side { padding: 14px; display: grid; gap: 10px; align-content: start; }
+    .sys-card {
+      border: 1px solid #24385f; border-radius: 12px; padding: 12px;
+      background: #0b1324;
+    }
+    .sys-head { color: var(--muted); font-size: 12px; margin-bottom: 8px; }
+    .log {
+      color: #b9c9e8; font-size: 12px; line-height: 1.5;
+      background: #060c18; border: 1px solid #1b2a49; border-radius: 8px; padding: 10px;
+    }
+    .ok { color: var(--accent); }
+    .warn { color: var(--warn); }
+
+    .section { margin-top: 24px; }
+    .section .panel { padding: 20px; }
+    .section h2 {
+      margin: 0 0 14px;
+      font-size: clamp(24px, 3vw, 34px);
+      letter-spacing: -.4px;
+    }
+    .sub { color: var(--muted); margin: 0 0 16px; }
+
+    .grid-3 { display:grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+    .card {
+      border: 1px solid #233557;
+      border-radius: 14px;
+      padding: 14px;
+      background: #0a1222;
+    }
+    .card h3 { margin: 0 0 8px; font-size: 18px; }
+    .card p { margin: 0; color: var(--muted); line-height: 1.5; font-size: 14px; }
+
+    .flow {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+    }
+    .step {
+      border: 1px dashed #315085;
+      border-radius: 12px;
+      padding: 12px;
+      background: #0a1222;
+    }
+    .step b { display: block; margin-bottom: 6px; }
+    .step span { color: var(--muted); font-size: 14px; }
+
+    .footer {
+      margin: 28px 0 36px;
+      color: var(--muted);
+      font-size: 13px;
+      display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+    }
+
+    @media (max-width: 980px) {
+      .hero { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: 1fr; }
+      .flow { grid-template-columns: 1fr 1fr; }
+      .kpi-row { grid-template-columns: 1fr; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "name": "Bogdan Lab",
+        "url": "https://bogdan-lab.ru/",
+        "serviceType": "AI automation and agent infrastructure",
+        "areaServed": "Remote"
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Сколько занимает запуск MVP?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Обычно 7–14 дней до первого MVP с метриками и логами."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Для кого подходит Bogdan Lab?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Для команд и фаундеров, которым нужна рабочая AI-инфраструктура, а не демо и инфошум."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Как принимается решение о масштабировании?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "По KPI: latency, quality, conversion и экономия времени, а не по ощущениям."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
-<body class="antialiased">
-    <!-- simplified background, removed scanline and heavy glow -->
-    <div class="fixed inset-0 pointer-events-none overflow-hidden -z-10">
-        <div class="absolute top-[-20%] left-[-20%] w-[60%] h-[60%] bg-emerald-900/5 rounded-full blur-[180px]"></div>
-        <div class="absolute bottom-[-20%] right-[-20%] w-[60%] h-[60%] bg-blue-900/5 rounded-full blur-[180px]"></div>
-    </div>
+<body>
+  <div class="wrap">
+    <header class="topbar">
+      <div class="logo">BOGDAN<span>.LAB</span> // operator-grade systems</div>
+      <div class="status-pill mono">[SYSTEM][OK] infra stable • deployment ready</div>
+    </header>
 
-    <div class="max-w-6xl mx-auto px-6">
-        <!-- Navigation -->
-        <header class="flex justify-between items-center py-10">
-            <div class="text-2xl font-bold tracking-tighter italic text-white">BOGDAN<span class="text-emerald-400">.LAB</span></div>
-            <div class="flex items-center gap-6">
-                <nav class="hidden md:flex gap-8 text-[10px] mono uppercase tracking-widest text-neutral-500">
-                    <a href="#infra" class="hover:text-emerald-400 transition-colors">Infrastructure</a>
-                    <a href="#markets" class="hover:text-emerald-400 transition-colors">Markets</a>
-                    <a href="#agents" class="hover:text-emerald-400 transition-colors">Agents</a>
-                </nav>
-                <button class="lang-switch mono" onclick="toggleLang()" id="langBtn">RU / EN</button>
-            </div>
-        </header>
+    <section class="hero">
+      <article class="panel hero-main">
+        <div class="mono" style="color:#89a0c9;font-size:12px;margin-bottom:8px;">MODE: BUILD → MEASURE → SCALE</div>
+        <h1>Не “ещё один AI-лендинг”.<br>А операционная система для роста бизнеса.</h1>
+        <p class="lead">
+          Я строю для компаний рабочую AI-инфраструктуру: QA/DevOps автоматизацию, RAG-пайплайны и агентные процессы,
+          где видно <b>время, метрики и деньги</b> — без инфошума и без магии.
+        </p>
 
-        <!-- Hero Section -->
-        <section class="grid lg:grid-cols-2 gap-16 items-center py-20">
-            <div class="space-y-8">
-                <div data-lang="ru">
-                    <span class="mono text-xs text-emerald-500 mb-4 block uppercase tracking-tighter">Статус системы: Оптимальный // Фев 2026</span>
-                    <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6 tracking-tight text-white">
-                        Богдан — QA Automation & DevOps.
-                    </h1>
-                    <h2 class="text-2xl md:text-3xl font-semibold text-neutral-200 mb-6">
-                        Строю агентную инфраструктуру вместо десятков сотрудников.
-                    </h2>
-                    <p class="mono text-xs text-emerald-400 uppercase tracking-widest">Минус 20–40 часов ручной рутины в месяц • MVP AI-автоматизации за 7–14 дней</p>
-                    <p class="text-xl text-neutral-400 max-w-lg leading-relaxed">
-                        Я инженер QA/DevOps, который собирает для бизнеса автономную ИИ-инфраструктуру: от пайплайнов и ботов до агентов, которые берут на себя рутину и приносят деньги, пока вы спите.
-                    </p>
-                </div>
-                <div data-lang="en">
-                    <span class="mono text-xs text-emerald-500 mb-4 block uppercase tracking-tighter">System Status: Optimal // Feb 2026</span>
-                    <h1 class="text-4xl md:text-6xl font-bold leading-tight mb-6 tracking-tight text-white">
-                        Bogdan — QA Automation & DevOps.
-                    </h1>
-                    <h2 class="text-2xl md:text-3xl font-semibold text-neutral-200 mb-6">
-                        I build agentic infrastructure instead of hiring more people.
-                    </h2>
-                    <p class="mono text-xs text-emerald-400 uppercase tracking-widest">20–40 manual hours/month removed • AI automation MVP in 7–14 days</p>
-                    <p class="text-xl text-neutral-400 max-w-lg leading-relaxed">
-                        I’m a QA Automation & DevOps engineer who designs and deploys agentic infrastructure: pipelines, bots and autonomous systems that handle the busywork and create value while you sleep.
-                    </p>
-                </div>
-                
-                <div class="flex flex-wrap gap-4 pt-4">
-                    <a href="https://t.me/bogdan_sys" data-track="cta_telegram" class="bg-emerald-500 text-black font-bold px-10 py-5 rounded-xl hover:scale-105 transition-transform shadow-xl shadow-emerald-500/20">
-                        <span data-lang="ru">Запустить Агента</span>
-                        <span data-lang="en">Deploy Agent</span>
-                    </a>
-                    <a href="#proof" data-track="cta_cases" class="border border-neutral-800 text-neutral-300 font-semibold px-10 py-5 rounded-xl hover:bg-neutral-900 transition-colors">
-                        <span data-lang="ru">Кейсы</span>
-                        <span data-lang="en">View Case Studies</span>
-                    </a>
-                    <a href="#brief" data-track="cta_brief" class="glass-btn">
-                        <span data-lang="ru">Запросить аудит процессов</span>
-                        <span data-lang="en">Request Process Audit</span>
-                    </a>
-                </div>
-            </div>
-            
-            <!-- Terminal / Robik Interface -->
-            <div class="terminal rounded-2xl overflow-hidden border border-neutral-800/50 relative">
-                <div class="absolute inset-0 bg-gradient-to-tr from-emerald-500/5 to-transparent pointer-events-none"></div>
-                <div class="bg-[#111] px-5 py-3 flex justify-between items-center border-b border-neutral-800">
-                    <div class="flex gap-2">
-                        <div class="w-3 h-3 rounded-full bg-red-500/30"></div>
-                        <div class="w-3 h-3 rounded-full bg-yellow-500/30"></div>
-                        <div class="w-3 h-3 rounded-full bg-green-500/30"></div>
-                    </div>
-                    <div class="text-[10px] mono text-neutral-600 tracking-tighter uppercase">robik@agent-core: ~/moltbook-hunter</div>
-                </div>
-                <div class="p-8 mono text-xs md:text-sm leading-relaxed min-h-[340px] space-y-3">
-                    <div class="text-emerald-500/80 italic"># Initialize Robik Core v4.6...</div>
-                    <div class="text-neutral-500">[2026-02-16 14:21] Scanning Moltbook for opportunities...</div>
-                    <div class="text-neutral-400">> Found: <span class="text-emerald-400 font-bold">[REQUEST]</span> AI Infra Architect (High Priority)</div>
-                    <div class="text-blue-400/80">> Analyzing bid strategy... DONE.</div>
-                    <div class="pt-4 pb-2 border-t border-neutral-900">
-                        <span class="text-emerald-400 font-bold">Robik:</span> 
-                        <span class="text-neutral-200">"Привет, Богдан! Я зафиксировал 12 активных узлов и перехватил новый заказ на автоматизацию. Ожидаю подтверждения для отправки оффера."</span>
-                    </div>
-                    <div class="inline-block pt-2">
-                        <span class="text-emerald-500">$</span> <span id="type-text"></span><span class="cursor-blink"></span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Dynamic Stats -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-32">
-            <div class="card-blur p-10 rounded-3xl">
-                <div class="text-[10px] mono text-neutral-500 mb-3 uppercase tracking-widest italic">Systems Built</div>
-                <div class="text-5xl font-bold text-white tracking-tighter">4</div>
-            </div>
-            <div class="card-blur p-10 rounded-3xl border-emerald-500/20">
-                <div class="text-[10px] mono text-neutral-500 mb-3 uppercase tracking-widest italic">Agentic Stack</div>
-                <div class="text-5xl font-bold text-emerald-400 tracking-tighter">OpenClaw</div>
-            </div>
-            <div class="card-blur p-10 rounded-3xl">
-                <div class="text-[10px] mono text-neutral-500 mb-3 uppercase tracking-widest italic">Years in QA/DevOps</div>
-                <div class="text-5xl font-bold text-white tracking-tighter">3–6</div>
-            </div>
-            <div class="card-blur p-10 rounded-3xl">
-                <div class="text-[10px] mono text-neutral-500 mb-3 uppercase tracking-widest italic">Active Projects</div>
-                <div class="text-5xl font-bold text-white tracking-tighter">Sniper · Bounty · Bot</div>
-            </div>
+        <div class="kpi-row">
+          <div class="kpi"><b>7–14 дней</b><small>до первого MVP</small></div>
+          <div class="kpi"><b>20–40 ч/мес</b><small>рутины уходит в автомат</small></div>
+          <div class="kpi"><b>GO / NO-GO</b><small>решение по KPI, не по эмоциям</small></div>
         </div>
 
-        <!-- Capabilities Grid -->
-        <section id="infra" class="mb-40">
-            <div class="text-center mb-20 space-y-4">
-                <h2 class="text-4xl md:text-6xl font-bold italic tracking-tighter text-white">Systems I’ve Built</h2>
-                <p class="text-neutral-500 mono text-sm uppercase tracking-widest">Real infrastructure, not slideware</p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <div class="group relative p-px rounded-3xl bg-neutral-800 hover:bg-gradient-to-br hover:from-emerald-500/50 hover:to-blue-500/50 transition-all duration-500">
-                    <div class="relative bg-[#080808] p-10 rounded-[calc(1.5rem-1px)] h-full space-y-6">
-                        <div class="w-14 h-14 bg-neutral-900 rounded-2xl flex items-center justify-center text-2xl">🌩️</div>
-                        <h3 class="text-2xl font-bold text-white tracking-tight">Sniper Bot</h3>
-                        <div data-lang="ru">
-                            <p class="text-neutral-500 text-sm leading-relaxed">Крипто-агент, который отслеживает движения Satoshi-кошельков и крупные on-chain события. Используется как радар рисков и возможностей.</p>
-                        </div>
-                        <div data-lang="en">
-                            <p class="text-neutral-500 text-sm leading-relaxed">Crypto monitoring agent that tracks Satoshi-era wallets and large on-chain moves. Acts as a radar for market risks and opportunities.</p>
-                        </div>
-                    </div>
-                </div>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://t.me/bogdan_sys">Запустить аудит процесса</a>
+          <a class="btn" href="#cases">Смотреть боевые кейсы</a>
+          <a class="btn" href="#plan">План внедрения</a>
+        </div>
+      </article>
 
-                <div class="group relative p-px rounded-3xl bg-neutral-800 hover:bg-gradient-to-br hover:from-blue-500/50 hover:to-purple-500/50 transition-all duration-500">
-                    <div class="relative bg-[#080808] p-10 rounded-[calc(1.5rem-1px)] h-full space-y-6">
-                        <div class="w-14 h-14 bg-neutral-900 rounded-2xl flex items-center justify-center text-2xl">📉</div>
-                        <h3 class="text-2xl font-bold text-white tracking-tight">Bounty Monitor</h3>
-                        <div data-lang="ru">
-                            <p class="text-neutral-500 text-sm leading-relaxed">Система, которая сканирует Algora, Bountycaster и Moltbook, отбирает задачи c payout &gt; $200 по QA/DevOps/Agentic и предлагает стратегию закрытия.</p>
-                        </div>
-                        <div data-lang="en">
-                            <p class="text-neutral-500 text-sm leading-relaxed">A monitoring system that scans Algora, Bountycaster and Moltbook, filters bounties &gt; $200 in QA/DevOps/Agentic and suggests closing strategies.</p>
-                        </div>
-                    </div>
-                </div>
+      <aside class="panel hero-side">
+        <div class="sys-card">
+          <div class="sys-head mono">LIVE OPS FEED</div>
+          <div class="log mono">
+            <div>[08:10] <span class="ok">[OK]</span> AgentMarket pipeline alive</div>
+            <div>[08:22] <span class="ok">[OK]</span> Universal Bot healthcheck pass</div>
+            <div>[09:03] <span class="ok">[OK]</span> HUNT report generated</div>
+            <div>[09:17] <span class="warn">[INFO]</span> New lead source added</div>
+          </div>
+        </div>
+        <div class="sys-card">
+          <div class="sys-head mono">DELIVERY STACK</div>
+          <div class="log mono">
+            OpenClaw · Python · Node.js · Docker<br>
+            Playwright · CI/CD · Telegram Ops<br>
+            RAG / retrieval / metrics / guardrails
+          </div>
+        </div>
+        <div class="sys-card">
+          <div class="sys-head mono">WORK MODE</div>
+          <div class="log mono">Short cycles. Hard KPIs. Minimal noise.</div>
+        </div>
+      </aside>
+    </section>
 
-                <div class="group relative p-px rounded-3xl bg-neutral-800 hover:bg-gradient-to-br hover:from-amber-500/50 hover:to-red-500/50 transition-all duration-500">
-                    <div class="relative bg-[#080808] p-10 rounded-[calc(1.5rem-1px)] h-full space-y-6">
-                        <div class="w-14 h-14 bg-neutral-900 rounded-2xl flex items-center justify-center text-2xl">🛡️</div>
-                        <h3 class="text-2xl font-bold text-white tracking-tight">Universal Bot</h3>
-                        <div data-lang="ru">
-                            <p class="text-neutral-500 text-sm leading-relaxed">Личный OpenClaw-бот (Robik), который управляет моделями Codex, Gemini и локальной Ollama, оркестрирует браузер, shell и cron-задачи на твоём сервере.</p>
-                        </div>
-                        <div data-lang="en">
-                            <p class="text-neutral-500 text-sm leading-relaxed">Personal OpenClaw bot (Robik) that orchestrates Codex, Gemini and local Ollama models, controls browser, shell and cron jobs on your server.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <section id="cases" class="section">
+      <div class="panel">
+        <h2>Кейсы, где система уже работает</h2>
+        <p class="sub">Не обещания “x100”. Только конкретные процессы и результат.</p>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Bounty Monitor</h3>
+            <p>Сканирует рынки задач и фильтрует high-ticket направления под QA/DevOps/AI automation. Команда не тонет в мусоре.</p>
+          </div>
+          <div class="card">
+            <h3>Universal Bot (Robik)</h3>
+            <p>Операционный ассистент: системные проверки, отчёты, маршрутизация задач, автоматизация рутинных действий.</p>
+          </div>
+          <div class="card">
+            <h3>AgentMarket Ops</h3>
+            <p>Поддержка backend-потоков, стабильность сервисов и наблюдаемость процессов для ежедневной работы без ручного хаоса.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <!-- Proof / Case Studies -->
-        <section id="proof" class="mb-40">
-            <div class="text-center mb-16 space-y-3">
-                <h2 class="text-4xl md:text-5xl font-bold tracking-tight text-white">Proof: QA Automation + AI Automation + DevOps</h2>
-                <p class="text-neutral-500 mono text-xs uppercase tracking-widest">Problem → Solution → Measurable Result</p>
-            </div>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="card-blur p-8 rounded-2xl">
-                    <h3 class="text-lg font-semibold mb-3">Whale Alert Sniper</h3>
-                    <p class="text-neutral-400 text-sm">Проблема: ручной мониторинг рынка и запоздалые сигналы.<br>Решение: автономный агент с событиями и фильтрацией.<br><span class="text-emerald-400">Результат: сигналы приходят автоматически 24/7.</span></p>
-                </div>
-                <div class="card-blur p-8 rounded-2xl">
-                    <h3 class="text-lg font-semibold mb-3">Bounty Monitor</h3>
-                    <p class="text-neutral-400 text-sm">Проблема: потеря времени на низкооплачиваемые задачи.<br>Решение: сканер Algora/Bountycaster/Moltbook с фильтром payout.<br><span class="text-emerald-400">Результат: фокус только на high-ticket задачах.</span></p>
-                </div>
-                <div class="card-blur p-8 rounded-2xl">
-                    <h3 class="text-lg font-semibold mb-3">Robik Ops Assistant</h3>
-                    <p class="text-neutral-400 text-sm">Проблема: операционная рутина и переключение контекста.<br>Решение: оркестрация OpenClaw + Codex/Gemini/Ollama + cron.<br><span class="text-emerald-400">Результат: 20–40 часов рутины/мес уходят в автоматизацию.</span></p>
-                </div>
-            </div>
-            <div class="mt-8 text-sm text-neutral-500">Stack: OpenClaw, Playwright, Docker, CI/CD, Python, Node.js.</div>
-        </section>
+    <section id="plan" class="section">
+      <div class="panel">
+        <h2>Как выглядит внедрение (без созвонов и бюрократии)</h2>
+        <p class="sub">Чат-флоу: бриф → scope → MVP → метрики → решение о масштабировании.</p>
+        <div class="flow">
+          <div class="step"><b>Шаг 1 · Боль</b><span>Фиксируем процесс, где теряются время/деньги.</span></div>
+          <div class="step"><b>Шаг 2 · Scope</b><span>P0-only: что реально внедрить за 7–14 дней.</span></div>
+          <div class="step"><b>Шаг 3 · MVP</b><span>Запуск пайплайна с логами, KPI и контролем качества.</span></div>
+          <div class="step"><b>Шаг 4 · Decision</b><span>GO/NO-GO по цифрам: latency, quality, conversion.</span></div>
+        </div>
+      </div>
+    </section>
 
-        <!-- Brief Form -->
-        <section id="brief" class="mb-32">
-            <div class="card-blur rounded-3xl p-8 md:p-10">
-                <h2 class="text-3xl font-bold mb-6">Быстрый бриф на автоматизацию</h2>
-                <form class="grid md:grid-cols-3 gap-4" action="https://t.me/bogdan_sys" method="get" target="_blank">
-                    <input name="process" required placeholder="Какой процесс автоматизируем?" class="bg-black/40 border border-neutral-800 rounded-xl px-4 py-3 text-sm">
-                    <input name="volume" required placeholder="Объём ручной работы (часов/нед)" class="bg-black/40 border border-neutral-800 rounded-xl px-4 py-3 text-sm">
-                    <input name="goal" required placeholder="Цель (экономия/лиды/скорость)" class="bg-black/40 border border-neutral-800 rounded-xl px-4 py-3 text-sm">
-                    <button data-track="brief_submit" class="md:col-span-3 bg-emerald-500 text-black font-bold px-6 py-4 rounded-xl">Отправить бриф в Telegram</button>
-                </form>
-            </div>
-        </section>
+    <section class="section">
+      <div class="panel">
+        <h2>Старт сегодня</h2>
+        <p class="sub">Пиши в Telegram 3 строки: процесс, текущая боль, целевой результат. В ответ — короткий план и срок запуска.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://t.me/bogdan_sys">Написать @bogdan_sys</a>
+          <a class="btn" href="https://github.com/shannonparkinson397-ctrl" target="_blank" rel="noopener">Портфолио / GitHub Pages</a>
+        </div>
+      </div>
+    </section>
 
-        <!-- Current Focus -->
-        <section class="mb-40 space-y-6">
-            <h2 class="text-3xl font-bold italic text-white tracking-tighter uppercase opacity-50">Now</h2>
-            <div class="grid md:grid-cols-3 gap-6">
-                <div class="border-l-2 border-emerald-500 pl-8 py-4">
-                    <div class="text-[10px] mono text-emerald-500 uppercase font-bold mb-2">Remote Work</div>
-                    <p class="text-neutral-500 text-sm max-w-xl">Ищу remote-позицию QA Automation / DevOps Engineer (160–250k₽) с фокусом на пайплайны, тестовую инфраструктуру и интеграцию ИИ-агентов.</p>
-                </div>
-                <div class="border-l-2 border-neutral-800 pl-8 py-4">
-                    <div class="text-[10px] mono text-neutral-500 uppercase font-bold mb-2">Bounties</div>
-                    <p class="text-neutral-500 text-sm max-w-xl">Хантинг задач &gt; $200 на Algora, Bountycaster и Moltbook в доменах QA, DevOps и agentic tooling.</p>
-                </div>
-                <div class="border-l-2 border-neutral-800 pl-8 py-4">
-                    <div class="text-[10px] mono text-neutral-500 uppercase font-bold mb-2">Agents</div>
-                    <p class="text-neutral-500 text-sm max-w-xl">Прокачиваю Robik как полноценного операционного ассистента: почта, вакансии, ресёрч, мониторинг инфраструктуры.</p>
-                </div>
-            </div>
-        </section>
+    <section class="section">
+      <div class="panel">
+        <h2>FAQ</h2>
+        <div class="grid-3">
+          <div class="card">
+            <h3>Сколько до MVP?</h3>
+            <p>Обычно 7–14 дней до первого рабочего пайплайна с метриками и отчётами.</p>
+          </div>
+          <div class="card">
+            <h3>Это для стартапов или для зрелых команд?</h3>
+            <p>Для обоих: сначала P0-процесс с быстрой отдачей, потом масштабирование по KPI.</p>
+          </div>
+          <div class="card">
+            <h3>Как начинается работа?</h3>
+            <p>Пиши в Telegram процесс + боль + цель. В ответ получаешь scope и срок запуска.</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <!-- Footer -->
-        <footer class="py-20 border-t border-neutral-900 flex flex-col md:flex-row justify-between items-center gap-8">
-            <div class="text-neutral-600 text-[10px] mono uppercase tracking-widest">
-                © 2026 BOGDAN LAB // BUILT WITH OPENCLAW + CODEX
-            </div>
-            <div class="flex gap-10 text-[10px] mono uppercase tracking-widest text-neutral-400">
-                <a href="https://github.com/bogdan" class="hover:text-emerald-400 transition-colors">GitHub</a>
-                <a href="#" class="hover:text-emerald-400 transition-colors">Moltbook</a>
-                <a href="https://t.me/bogdan_sys" class="hover:text-emerald-400 transition-colors">Telegram</a>
-            </div>
-        </footer>
-    </div>
-
-    <!-- Floating Initialize Button (Mobile Only) -->
-    <div class="fixed bottom-8 right-8 lg:hidden">
-        <a href="https://t.me/bogdan_sys" class="w-16 h-16 bg-emerald-500 rounded-full flex items-center justify-center shadow-2xl shadow-emerald-500/40">
-            <span class="text-2xl">💬</span>
-        </a>
-    </div>
-
-    <script>
-        let currentLang = 'ru';
-        const typedText = "npm run start-hunter --mode aggressive";
-        let charIndex = 0;
-
-        function toggleLang() {
-            currentLang = currentLang === 'ru' ? 'en' : 'ru';
-            document.querySelectorAll('[data-lang="ru"]').forEach(el => el.style.display = currentLang === 'ru' ? 'block' : 'none');
-            document.querySelectorAll('[data-lang="en"]').forEach(el => el.style.display = currentLang === 'en' ? 'block' : 'none');
-            document.getElementById('langBtn').innerText = currentLang === 'ru' ? 'RU / EN' : 'EN / RU';
-        }
-
-        function typeWriter() {
-            const el = document.getElementById("type-text");
-            if (el && charIndex < typedText.length) {
-                el.innerHTML += typedText.charAt(charIndex);
-                charIndex++;
-                setTimeout(typeWriter, 60);
-            }
-        }
-
-        function track(eventName) {
-            try {
-                window.dataLayer = window.dataLayer || [];
-                window.dataLayer.push({ event: eventName, ts: Date.now() });
-            } catch (e) {}
-        }
-
-        // Initialize view
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('[data-lang="en"]').forEach(el => el.style.display = 'none');
-            setTimeout(typeWriter, 1200);
-            document.querySelectorAll('[data-track]').forEach(el => {
-                el.addEventListener('click', () => track(el.getAttribute('data-track')));
-            });
-        });
-    </script>
+    <footer class="footer mono">
+      <div>© 2026 Bogdan Lab</div>
+      <div>Built for operators, not for hype.</div>
+    </footer>
+  </div>
 </body>
 </html>

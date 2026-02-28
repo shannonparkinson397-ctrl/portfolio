@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bogdan-lab.ru/sitemap.xml
