@@ -91,7 +91,7 @@
       pointer-events: none;
       background: linear-gradient(90deg, transparent 0%, rgba(94,242,208,.9) 35%, rgba(255,120,185,.88) 70%, transparent 100%);
       box-shadow: 0 0 22px rgba(114, 199, 255, .55);
-      animation: runner 13s cubic-bezier(.4,.05,.6,.95) infinite;
+      animation: runner 13s cubic-bezier(.4,.05,.6,.95) infinite, beat 2.4s ease-in-out infinite;
     }
 
     .cursor-orb {
@@ -130,6 +130,11 @@
       0% { transform: translateX(-120%); opacity: 0; }
       24% { opacity: .7; }
       100% { transform: translateX(120%); opacity: 0; }
+    }
+
+    @keyframes beat {
+      0%, 100% { filter: brightness(1) saturate(1); }
+      50% { filter: brightness(1.16) saturate(1.22); }
     }
 
     @keyframes drift {
@@ -494,7 +499,9 @@
     @media (max-width: 980px) {
       .kpis, .grid3 { grid-template-columns: 1fr; }
       .flow { grid-template-columns: 1fr 1fr; }
-      .hero { min-height: auto; padding-top: 20px; }
+      .hero { min-height: 72vh; padding-top: 20px; position: relative; }
+      .panel.stage { transition: transform .22s ease, border-color .25s ease, box-shadow .25s ease; }
+      .kinetic-runner { animation-duration: 16s, 2.8s; opacity: .72; }
     }
 
     @media (max-width: 640px) {
@@ -502,8 +509,11 @@
       .flow { grid-template-columns: 1fr; }
       .actions { justify-content: stretch; }
       .btn { width: 100%; text-align: center; justify-content: center; }
-      .kinetic-runner { top: 82vh; }
-      .cursor-orb { display: none; }
+      .kinetic-runner { top: 86vh; opacity: .6; }
+      .cursor-orb, .scene-cut { display: none; }
+      body { scroll-snap-type: none; }
+      section.block { min-height: auto; margin: 24px 0; }
+      .panel.stage { transform: none !important; filter: none; opacity: 1; clip-path: none; }
     }
   </style>
 
@@ -751,8 +761,10 @@
 
       if (closest !== activeStage && closest !== -1) {
         activeStage = closest;
-        sceneCut.classList.add('flash');
-        setTimeout(() => sceneCut.classList.remove('flash'), 130);
+        if (window.innerWidth > 640) {
+          sceneCut.classList.add('flash');
+          setTimeout(() => sceneCut.classList.remove('flash'), 110);
+        }
       }
     }
 
