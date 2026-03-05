@@ -296,7 +296,7 @@
 
     .kpi span { color: var(--muted); font-size: 13px; }
 
-    section.block { margin: 36px 0; scroll-snap-align: start; position: relative; }
+    section.block { margin: 36px 0; scroll-snap-align: start; position: relative; min-height: 88vh; display: grid; align-items: center; }
 
     section.block::before {
       content: "";
@@ -315,13 +315,21 @@
       z-index: 1;
       pointer-events: none;
       mix-blend-mode: screen;
-      opacity: .28;
+      opacity: .33;
       background:
-        radial-gradient(40vw 20vw at 20% 20%, rgba(142,122,255,.35), transparent 60%),
-        radial-gradient(35vw 18vw at 82% 72%, rgba(94,242,208,.3), transparent 60%),
-        linear-gradient(120deg, rgba(255,120,185,.08), transparent 45%);
+        radial-gradient(46vw 24vw at 18% 18%, rgba(142,122,255,.42), transparent 60%),
+        radial-gradient(37vw 20vw at 82% 72%, rgba(94,242,208,.36), transparent 60%),
+        linear-gradient(120deg, rgba(255,120,185,.13), transparent 45%);
       transform: translate3d(0,0,0);
-      transition: transform .15s linear;
+      transition: transform .12s linear;
+    }
+
+    .vignette {
+      position: fixed;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+      background: radial-gradient(circle at center, transparent 45%, rgba(2,4,10,.46) 100%);
     }
 
     .panel {
@@ -427,16 +435,18 @@
 
     .panel.stage {
       transform-style: preserve-3d;
-      transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease, clip-path .45s ease, opacity .45s ease;
+      transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease, clip-path .45s ease, opacity .45s ease, filter .35s ease;
       clip-path: polygon(0 3%, 100% 0, 100% 97%, 0 100%);
-      opacity: .9;
+      opacity: .72;
+      filter: saturate(.86) blur(.3px);
     }
 
     .panel.stage.active {
-      border-color: rgba(154, 175, 248, 0.55);
-      box-shadow: 0 32px 100px rgba(7, 14, 31, .68);
+      border-color: rgba(154, 175, 248, 0.65);
+      box-shadow: 0 40px 120px rgba(7, 14, 31, .74);
       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
       opacity: 1;
+      filter: saturate(1.15) blur(0);
     }
 
     .panel.stage::after {
@@ -524,6 +534,7 @@
   <div class="glow c"></div>
 
   <div class="parallax-layer" aria-hidden="true" id="parallaxLayer"></div>
+  <div class="vignette" aria-hidden="true"></div>
   <div class="kinetic-runner" aria-hidden="true"></div>
   <div class="cursor-orb" aria-hidden="true" id="cursorOrb"></div>
 
@@ -703,11 +714,12 @@
         const center = r.top + r.height / 2;
         const dist = Math.abs(window.innerHeight / 2 - center);
         const norm = Math.min(1, dist / (window.innerHeight * 0.72));
-        const lift = (1 - norm) * 14;
-        const rot = (0.5 - (center / window.innerHeight)) * 3.2;
-        const scale = 0.985 + (1 - norm) * 0.02;
-        stage.style.transform = `perspective(1100px) translateY(${-lift}px) rotateX(${rot}deg) scale(${scale})`;
-        stage.classList.toggle('active', norm < 0.45);
+        const lift = (1 - norm) * 22;
+        const rot = (0.5 - (center / window.innerHeight)) * 5;
+        const scale = 0.95 + (1 - norm) * 0.08;
+        const depth = (1 - norm) * 36;
+        stage.style.transform = `perspective(1200px) translateY(${-lift}px) translateZ(${depth}px) rotateX(${rot}deg) scale(${scale})`;
+        stage.classList.toggle('active', norm < 0.5);
       });
     }
 
