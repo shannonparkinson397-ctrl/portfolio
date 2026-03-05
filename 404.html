@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>404 — Страница не найдена | Bogdan Lab</title>
+  <meta name="description" content="404 страница Bogdan Lab" />
+  <style>
+    :root {
+      --bg:#070b14;
+      --card:#10182b;
+      --line:#2a3f67;
+      --text:#e9f0ff;
+      --muted:#9fb0d2;
+      --aqua:#67f0b1;
+      --blue:#8fcbff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;min-height:100vh;display:grid;place-items:center;
+      font-family:Inter,Arial,sans-serif;color:var(--text);
+      background:
+        radial-gradient(1000px 560px at 85% -20%, #2a4f9b66 0%, transparent 60%),
+        radial-gradient(900px 500px at -10% 100%, #1f6b5866 0%, transparent 55%),
+        linear-gradient(180deg,var(--bg),#050810);
+      overflow:hidden;
+    }
+    .card{
+      width:min(760px,92vw);
+      border:1px solid var(--line);
+      background:linear-gradient(180deg,#0d162a,#0b1221);
+      border-radius:18px;
+      padding:28px;
+      box-shadow:0 24px 70px rgba(0,0,0,.45);
+      position:relative;
+    }
+    .ghost{
+      position:absolute;right:18px;top:14px;font-size:13px;color:var(--muted)
+    }
+    h1{margin:0 0 8px;font-size:44px;line-height:1}
+    .big{font-size:86px;font-weight:800;letter-spacing:-2px;
+      background:linear-gradient(95deg,var(--aqua),var(--blue));
+      -webkit-background-clip:text;background-clip:text;color:transparent;
+      margin-bottom:8px;
+    }
+    p{margin:0 0 10px;color:var(--muted);line-height:1.5}
+    .row{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    a{
+      text-decoration:none;padding:11px 14px;border-radius:10px;font-weight:700;font-size:14px;
+      border:1px solid #355187;color:#d9e8ff;background:#0b1324;
+    }
+    a.primary{border:0;color:#041018;background:linear-gradient(95deg,var(--aqua),var(--blue));}
+    .tip{margin-top:14px;font-size:13px;color:#8ea2c9}
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="ghost">BOGDAN.LAB // not found</div>
+    <div class="big">404</div>
+    <h1>…без меня здесь не работает</h1>
+    <p>Похоже, ты попал на страницу, которой больше нет или ссылка устарела.</p>
+    <p>Вернёмся в рабочий контур.</p>
+
+    <div class="row">
+      <a class="primary" href="/">Вернуться на главную</a>
+      <a href="https://t.me/bogdan_sys" target="_blank" rel="noopener">Написать в Telegram</a>
+    </div>
+
+    <div class="tip">Если это критично для бизнеса — пиши «404» в Telegram, разберём за 15 минут.</div>
+  </main>
+</body>
+</html>
