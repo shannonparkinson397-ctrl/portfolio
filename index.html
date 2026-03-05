@@ -159,6 +159,11 @@
       padding: 24px 0 8px;
     }
 
+    .top-actions { display:flex; align-items:center; gap:10px; }
+    .lang-switch { font-size:12px; color:#b8c6e6; }
+    .lang-switch a { color:#b8c6e6; text-decoration:none; }
+    .lang-switch a:hover { color:#fff; }
+
     .brand {
       font-family: "Unbounded", sans-serif;
       font-size: 17px;
@@ -609,7 +614,10 @@
   <main class="container">
     <header class="topbar reveal">
       <div class="brand">BOGDAN<span>.LAB</span></div>
-      <div class="status">SYSTEM ONLINE · BUILD → MEASURE → SCALE</div>
+      <div class="top-actions">
+        <div class="lang-switch"><a href="/">RU</a> / <a href="/en.html">EN</a></div>
+        <div class="status">SYSTEM ONLINE · BUILD → MEASURE → SCALE</div>
+      </div>
     </header>
 
     <section class="hero reveal">

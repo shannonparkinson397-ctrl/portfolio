@@ -19,6 +19,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://bogdan-lab.ru/en.html</loc>
+    <lastmod>2026-03-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://bogdan-lab.ru/privacy.html</loc>
     <lastmod>2026-03-05</lastmod>
     <changefreq>monthly</changefreq>
