@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Bogdan Lab — AI Automation Studio</title>
   <meta name="description" content="Bogdan Lab: AI-автоматизация QA/DevOps и операционных процессов. Внедрение за 7–14 дней, с измеримыми KPI и эффектной презентацией продукта." />
   <meta property="og:title" content="Bogdan Lab — AI Automation Studio" />
@@ -148,6 +148,8 @@
       margin: 0 auto;
       position: relative;
       z-index: 2;
+      padding-left: max(0px, env(safe-area-inset-left));
+      padding-right: max(0px, env(safe-area-inset-right));
     }
 
     .topbar {
@@ -514,6 +516,20 @@
       body { scroll-snap-type: none; }
       section.block { min-height: auto; margin: 24px 0; }
       .panel.stage { transform: none !important; filter: none; opacity: 1; clip-path: none; }
+      h1 { letter-spacing: -1.1px; }
+      .lead { font-size: 16px; }
+      .kpi { padding: 14px; }
+    }
+
+    @media (hover: none) and (pointer: coarse) {
+      .btn:hover, .card:hover { transform: none !important; box-shadow: none; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
+      html { scroll-behavior: auto; }
+      .cursor-orb, .kinetic-runner, .scene-cut, .glow { display: none !important; }
+      .panel.stage { transform: none !important; filter: none !important; opacity: 1 !important; clip-path: none !important; }
     }
   </style>
 
@@ -775,10 +791,12 @@
       requestAnimationFrame(animateOrb);
     }
 
+    const isMobile = window.matchMedia('(max-width: 640px)').matches;
+
     window.addEventListener('scroll', updateStageFx, { passive: true });
     window.addEventListener('resize', updateStageFx);
     updateStageFx();
-    animateOrb();
+    if (!isMobile) animateOrb();
   </script>
 </body>
 </html>
