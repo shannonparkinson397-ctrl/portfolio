@@ -76,60 +76,46 @@
     .glow.b { background: #46e9cc; bottom: -20vw; left: -16vw; animation-delay: -6s; }
     .glow.c { background: #ff79be; top: 36%; left: 40%; width: 20vw; height: 20vw; animation-delay: -12s; }
 
-    .chameleon-wrap {
+    .kinetic-runner {
       position: fixed;
-      left: -180px;
-      bottom: 5vh;
-      z-index: 5;
+      left: -26vw;
+      top: 72vh;
+      width: 22vw;
+      min-width: 170px;
+      max-width: 320px;
+      height: 4px;
+      border-radius: 999px;
+      z-index: 4;
       pointer-events: none;
-      animation: walkAcross 22s linear infinite;
-      filter: drop-shadow(0 10px 18px rgba(0,0,0,.45));
-      opacity: .95;
+      background: linear-gradient(90deg, transparent 0%, rgba(94,242,208,.9) 35%, rgba(255,120,185,.88) 70%, transparent 100%);
+      box-shadow: 0 0 22px rgba(114, 199, 255, .55);
+      animation: runner 13s cubic-bezier(.4,.05,.6,.95) infinite;
     }
 
-    .chameleon {
-      width: clamp(96px, 11vw, 148px);
-      height: auto;
-      animation: bob .55s ease-in-out infinite alternate;
-      transform-origin: center bottom;
+    .cursor-orb {
+      position: fixed;
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      z-index: 6;
+      pointer-events: none;
+      left: 0;
+      top: 0;
+      will-change: transform;
+      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.8), rgba(126,145,255,.35) 45%, rgba(94,242,208,.22) 70%, rgba(94,242,208,0) 100%);
+      box-shadow: 0 0 24px rgba(110, 192, 255, .5), inset 0 0 12px rgba(255,255,255,.25);
+      mix-blend-mode: screen;
+      transition: width .25s ease, height .25s ease, opacity .25s ease;
+      opacity: .9;
     }
 
-    .leg-a { animation: legA .35s ease-in-out infinite alternate; transform-origin: center top; }
-    .leg-b { animation: legB .35s ease-in-out infinite alternate; transform-origin: center top; }
-    .tail { animation: tail .7s ease-in-out infinite alternate; transform-origin: left center; }
-    .eye { animation: eyeBlink 3.4s ease-in-out infinite; transform-origin: center; }
-
-    @keyframes walkAcross {
-      0% { transform: translateX(0) scaleX(1); }
-      45% { transform: translateX(52vw) scaleX(1); }
-      50% { transform: translateX(56vw) scaleX(-1); }
-      95% { transform: translateX(108vw) scaleX(-1); }
-      100% { transform: translateX(112vw) scaleX(-1); }
-    }
-
-    @keyframes bob {
-      from { transform: translateY(0); }
-      to { transform: translateY(-4px); }
-    }
-
-    @keyframes legA {
-      from { transform: rotate(8deg); }
-      to { transform: rotate(-8deg); }
-    }
-
-    @keyframes legB {
-      from { transform: rotate(-8deg); }
-      to { transform: rotate(8deg); }
-    }
-
-    @keyframes tail {
-      from { transform: rotate(-7deg); }
-      to { transform: rotate(7deg); }
-    }
-
-    @keyframes eyeBlink {
-      0%, 46%, 48%, 100% { transform: scaleY(1); }
-      47% { transform: scaleY(.12); }
+    @keyframes runner {
+      0% { transform: translateX(0) scaleX(.7); opacity: 0; }
+      8% { opacity: 1; }
+      45% { transform: translateX(58vw) scaleX(1); }
+      50% { transform: translateX(64vw) scaleX(-1); }
+      92% { transform: translateX(118vw) scaleX(-1); opacity: 1; }
+      100% { transform: translateX(128vw) scaleX(-1); opacity: 0; }
     }
 
     @keyframes drift {
@@ -388,8 +374,8 @@
       .flow { grid-template-columns: 1fr; }
       .actions { justify-content: stretch; }
       .btn { width: 100%; text-align: center; justify-content: center; }
-      .chameleon-wrap { bottom: 2vh; opacity: .82; }
-      .chameleon { width: 92px; }
+      .kinetic-runner { top: 82vh; }
+      .cursor-orb { display: none; }
     }
   </style>
 
@@ -434,20 +420,8 @@
   <div class="glow b"></div>
   <div class="glow c"></div>
 
-  <div class="chameleon-wrap" aria-hidden="true">
-    <svg class="chameleon" viewBox="0 0 220 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path class="tail" d="M27 69C8 62 7 37 30 34C47 32 56 47 49 57C44 64 35 64 32 58C30 54 33 49 38 49" stroke="#6CE6C8" stroke-width="8" stroke-linecap="round"/>
-      <ellipse cx="120" cy="62" rx="56" ry="30" fill="#66EBCB"/>
-      <ellipse cx="151" cy="52" rx="25" ry="20" fill="#7CF1D4"/>
-      <circle cx="164" cy="47" r="8" fill="#F7FFFD"/>
-      <circle class="eye" cx="166" cy="47" r="3.2" fill="#11222A"/>
-      <rect class="leg-a" x="93" y="78" width="12" height="22" rx="6" fill="#55DAB8"/>
-      <rect class="leg-b" x="116" y="78" width="12" height="24" rx="6" fill="#52D4B3"/>
-      <rect class="leg-b" x="136" y="78" width="11" height="23" rx="6" fill="#59DFC0"/>
-      <rect class="leg-a" x="154" y="76" width="11" height="24" rx="6" fill="#4BCFAC"/>
-      <path d="M188 59L214 52" stroke="#8BF7DF" stroke-width="5" stroke-linecap="round"/>
-    </svg>
-  </div>
+  <div class="kinetic-runner" aria-hidden="true"></div>
+  <div class="cursor-orb" aria-hidden="true" id="cursorOrb"></div>
 
   <main class="container">
     <header class="topbar reveal">
@@ -561,7 +535,7 @@
       });
     }, { threshold: 0.13 });
     items.forEach((el, idx) => {
-      el.style.transitionDelay = `${Math.min(idx * 80, 320)}ms`;
+      el.style.transitionDelay = `${Math.min(idx * 90, 360)}ms`;
       io.observe(el);
     });
 
@@ -571,12 +545,43 @@
         const r = btn.getBoundingClientRect();
         const x = e.clientX - r.left - r.width / 2;
         const y = e.clientY - r.top - r.height / 2;
-        btn.style.transform = `translate(${x * 0.05}px, ${y * 0.08 - 2}px)`;
+        btn.style.transform = `translate(${x * 0.06}px, ${y * 0.09 - 2}px)`;
       });
       btn.addEventListener('mouseleave', () => {
         btn.style.transform = 'translate(0,0)';
       });
     });
+
+    const orb = document.getElementById('cursorOrb');
+    let mx = window.innerWidth / 2, my = window.innerHeight / 2;
+    let ox = mx, oy = my;
+
+    window.addEventListener('mousemove', (e) => {
+      mx = e.clientX;
+      my = e.clientY;
+    });
+
+    const hoverables = document.querySelectorAll('a, .card, .kpi');
+    hoverables.forEach((el) => {
+      el.addEventListener('mouseenter', () => {
+        orb.style.width = '82px';
+        orb.style.height = '82px';
+        orb.style.opacity = '.96';
+      });
+      el.addEventListener('mouseleave', () => {
+        orb.style.width = '52px';
+        orb.style.height = '52px';
+        orb.style.opacity = '.9';
+      });
+    });
+
+    function animateOrb() {
+      ox += (mx - ox) * 0.12;
+      oy += (my - oy) * 0.12;
+      orb.style.transform = `translate(${ox - 26}px, ${oy - 26}px)`;
+      requestAnimationFrame(animateOrb);
+    }
+    animateOrb();
   </script>
 </body>
 </html>
