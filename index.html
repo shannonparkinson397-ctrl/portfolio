@@ -498,6 +498,50 @@
       transform: translateY(0) scale(1);
     }
 
+    
+    .floating-cta {
+      position: fixed;
+      right: 16px;
+      bottom: calc(16px + env(safe-area-inset-bottom));
+      z-index: 25;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 0;
+      color: #041018;
+      font-weight: 800;
+      text-decoration: none;
+      font-size: 13px;
+      background: linear-gradient(95deg, var(--aqua), #9bccff 48%, #ff92c8 100%);
+      box-shadow: 0 12px 28px rgba(72, 170, 255, .42);
+    }
+
+    .trust-row {
+      display:grid;
+      grid-template-columns: repeat(4,minmax(0,1fr));
+      gap:10px;
+      margin-top:14px;
+    }
+
+    .trust-pill {
+      border:1px solid rgba(128,151,228,.25);
+      background: rgba(8, 14, 28, .64);
+      border-radius: 12px;
+      padding: 10px;
+      font-size: 12px;
+      color: var(--muted);
+      text-align:center;
+    }
+
+    .faq details {
+      border: 1px solid rgba(128,151,228,.25);
+      border-radius: 12px;
+      padding: 12px;
+      background: rgba(8,14,28,.56);
+    }
+    .faq details + details { margin-top: 8px; }
+    .faq summary { cursor:pointer; font-weight:700; }
+    .faq p { color: var(--muted); margin: 8px 0 0; }
+
     @media (max-width: 980px) {
       .kpis, .grid3 { grid-template-columns: 1fr; }
       .flow { grid-template-columns: 1fr 1fr; }
@@ -512,7 +556,7 @@
       .actions { justify-content: stretch; }
       .btn { width: 100%; text-align: center; justify-content: center; }
       .kinetic-runner { top: 86vh; opacity: .6; }
-      .cursor-orb, .scene-cut { display: none; }
+      .cursor-orb, .scene-cut, .floating-cta { display: none; }
       body { scroll-snap-type: none; }
       section.block { min-height: auto; margin: 24px 0; }
       .panel.stage { transform: none !important; filter: none; opacity: 1; clip-path: none; }
@@ -693,11 +737,32 @@
       </div>
     </section>
 
+
+    <section class="block reveal faq">
+      <div class="panel stage">
+        <h2>Частые вопросы</h2>
+        <details>
+          <summary>Сколько реально времени до первого результата?</summary>
+          <p>Обычно 7–14 дней до рабочего контура с логами и базовой метрикой эффективности.</p>
+        </details>
+        <details>
+          <summary>Если у нас хаос и нет чётких процессов — это проблема?</summary>
+          <p>Нет. Начинаем с минимального рабочего сценария и быстро наводим порядок через короткие итерации.</p>
+        </details>
+        <details>
+          <summary>Нужна ли большая команда для внедрения?</summary>
+          <p>Нет. Достаточно владельца процесса и 1 ответственного с вашей стороны для согласований.</p>
+        </details>
+      </div>
+    </section>
+
     <footer class="footer reveal">
       <span>© 2026 Bogdan Lab</span>
       <span>Built for operators, not for hype.</span>
     </footer>
   </main>
+
+  <a class="floating-cta" href="https://t.me/bogdan_sys?text=%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA%20AI-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.%20%D0%9D%D0%B0%D1%87%D0%BD%D1%91%D0%BC." target="_blank" rel="noopener">Запуск в Telegram</a>
 
   <script>
     const items = document.querySelectorAll('.reveal');
@@ -807,6 +872,29 @@
       orb.style.transform = `translate(${ox - 26}px, ${oy - 26}px)`;
       requestAnimationFrame(animateOrb);
     }
+
+
+    const allLinks = document.querySelectorAll('a[href^="http"]');
+    allLinks.forEach((a) => {
+      try {
+        const u = new URL(a.href);
+        if (u.hostname.includes('t.me') || u.hostname.includes('github.com')) {
+          if (!u.searchParams.get('utm_source')) {
+            u.searchParams.set('utm_source', 'bogdan-lab');
+            u.searchParams.set('utm_medium', 'site');
+            u.searchParams.set('utm_campaign', 'conversion');
+            a.href = u.toString();
+          }
+        }
+      } catch(e) {}
+      a.addEventListener('click', () => {
+        const event = { ts: Date.now(), href: a.getAttribute('href'), text: (a.textContent||'').trim().slice(0,80) };
+        const key='blab_clicks';
+        const arr = JSON.parse(localStorage.getItem(key) || '[]');
+        arr.push(event);
+        localStorage.setItem(key, JSON.stringify(arr.slice(-100)));
+      });
+    });
 
     const isMobile = window.matchMedia('(max-width: 640px)').matches;
 
