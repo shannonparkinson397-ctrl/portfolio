@@ -76,6 +76,62 @@
     .glow.b { background: #46e9cc; bottom: -20vw; left: -16vw; animation-delay: -6s; }
     .glow.c { background: #ff79be; top: 36%; left: 40%; width: 20vw; height: 20vw; animation-delay: -12s; }
 
+    .chameleon-wrap {
+      position: fixed;
+      left: -180px;
+      bottom: 5vh;
+      z-index: 5;
+      pointer-events: none;
+      animation: walkAcross 22s linear infinite;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,.45));
+      opacity: .95;
+    }
+
+    .chameleon {
+      width: clamp(96px, 11vw, 148px);
+      height: auto;
+      animation: bob .55s ease-in-out infinite alternate;
+      transform-origin: center bottom;
+    }
+
+    .leg-a { animation: legA .35s ease-in-out infinite alternate; transform-origin: center top; }
+    .leg-b { animation: legB .35s ease-in-out infinite alternate; transform-origin: center top; }
+    .tail { animation: tail .7s ease-in-out infinite alternate; transform-origin: left center; }
+    .eye { animation: eyeBlink 3.4s ease-in-out infinite; transform-origin: center; }
+
+    @keyframes walkAcross {
+      0% { transform: translateX(0) scaleX(1); }
+      45% { transform: translateX(52vw) scaleX(1); }
+      50% { transform: translateX(56vw) scaleX(-1); }
+      95% { transform: translateX(108vw) scaleX(-1); }
+      100% { transform: translateX(112vw) scaleX(-1); }
+    }
+
+    @keyframes bob {
+      from { transform: translateY(0); }
+      to { transform: translateY(-4px); }
+    }
+
+    @keyframes legA {
+      from { transform: rotate(8deg); }
+      to { transform: rotate(-8deg); }
+    }
+
+    @keyframes legB {
+      from { transform: rotate(-8deg); }
+      to { transform: rotate(8deg); }
+    }
+
+    @keyframes tail {
+      from { transform: rotate(-7deg); }
+      to { transform: rotate(7deg); }
+    }
+
+    @keyframes eyeBlink {
+      0%, 46%, 48%, 100% { transform: scaleY(1); }
+      47% { transform: scaleY(.12); }
+    }
+
     @keyframes drift {
       0%,100% { transform: translate(0,0) scale(1); }
       33% { transform: translate(-22px, 15px) scale(1.07); }
@@ -332,6 +388,8 @@
       .flow { grid-template-columns: 1fr; }
       .actions { justify-content: stretch; }
       .btn { width: 100%; text-align: center; justify-content: center; }
+      .chameleon-wrap { bottom: 2vh; opacity: .82; }
+      .chameleon { width: 92px; }
     }
   </style>
 
@@ -375,6 +433,21 @@
   <div class="glow a"></div>
   <div class="glow b"></div>
   <div class="glow c"></div>
+
+  <div class="chameleon-wrap" aria-hidden="true">
+    <svg class="chameleon" viewBox="0 0 220 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path class="tail" d="M27 69C8 62 7 37 30 34C47 32 56 47 49 57C44 64 35 64 32 58C30 54 33 49 38 49" stroke="#6CE6C8" stroke-width="8" stroke-linecap="round"/>
+      <ellipse cx="120" cy="62" rx="56" ry="30" fill="#66EBCB"/>
+      <ellipse cx="151" cy="52" rx="25" ry="20" fill="#7CF1D4"/>
+      <circle cx="164" cy="47" r="8" fill="#F7FFFD"/>
+      <circle class="eye" cx="166" cy="47" r="3.2" fill="#11222A"/>
+      <rect class="leg-a" x="93" y="78" width="12" height="22" rx="6" fill="#55DAB8"/>
+      <rect class="leg-b" x="116" y="78" width="12" height="24" rx="6" fill="#52D4B3"/>
+      <rect class="leg-b" x="136" y="78" width="11" height="23" rx="6" fill="#59DFC0"/>
+      <rect class="leg-a" x="154" y="76" width="11" height="24" rx="6" fill="#4BCFAC"/>
+      <path d="M188 59L214 52" stroke="#8BF7DF" stroke-width="5" stroke-linecap="round"/>
+    </svg>
+  </div>
 
   <main class="container">
     <header class="topbar reveal">
