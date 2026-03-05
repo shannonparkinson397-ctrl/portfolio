@@ -120,6 +120,18 @@
       100% { transform: translateX(128vw) scaleX(-1); opacity: 0; }
     }
 
+    @keyframes spinAura {
+      from { transform: rotate(0deg) scale(1); }
+      50% { transform: rotate(180deg) scale(1.06); }
+      to { transform: rotate(360deg) scale(1); }
+    }
+
+    @keyframes sweep {
+      0% { transform: translateX(-120%); opacity: 0; }
+      24% { opacity: .7; }
+      100% { transform: translateX(120%); opacity: 0; }
+    }
+
     @keyframes drift {
       0%,100% { transform: translate(0,0) scale(1); }
       33% { transform: translate(-22px, 15px) scale(1.07); }
@@ -170,6 +182,18 @@
       text-align: center;
       padding: 42px 0 18px;
       position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -20% -10%;
+      background: conic-gradient(from 120deg, rgba(100,130,255,.24), rgba(84,235,205,.22), rgba(255,120,185,.2), rgba(100,130,255,.24));
+      filter: blur(46px);
+      animation: spinAura 16s linear infinite;
+      opacity: .55;
+      z-index: -1;
     }
 
     .badge {
@@ -272,7 +296,18 @@
 
     .kpi span { color: var(--muted); font-size: 13px; }
 
-    section.block { margin: 36px 0; scroll-snap-align: start; }
+    section.block { margin: 36px 0; scroll-snap-align: start; position: relative; }
+
+    section.block::before {
+      content: "";
+      position: absolute;
+      left: 6%;
+      right: 6%;
+      top: -18px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(136,160,240,.45), rgba(114,228,210,.45), transparent);
+      opacity: .7;
+    }
 
     .parallax-layer {
       position: fixed;
@@ -290,6 +325,7 @@
     }
 
     .panel {
+      position: relative;
       border: 1px solid var(--line);
       border-radius: 20px;
       background: linear-gradient(160deg, rgba(12,18,35,.82), rgba(10,14,25,.52));
@@ -401,6 +437,21 @@
       box-shadow: 0 32px 100px rgba(7, 14, 31, .68);
       clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
       opacity: 1;
+    }
+
+    .panel.stage::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      background: linear-gradient(115deg, transparent 20%, rgba(255,255,255,.08) 45%, transparent 60%);
+      transform: translateX(-120%);
+      opacity: 0;
+    }
+
+    .panel.stage.active::after {
+      animation: sweep 1.2s ease;
     }
 
     .reveal {
@@ -631,12 +682,21 @@
       });
     });
 
+    let lastY = window.scrollY;
+    let lastT = performance.now();
+
     function updateStageFx() {
+      const now = performance.now();
       const max = document.documentElement.scrollHeight - window.innerHeight;
       const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
       progress.style.width = `${Math.min(100, Math.max(0, pct))}%`;
 
-      parallaxLayer.style.transform = `translate3d(0, ${window.scrollY * -0.06}px, 0)`;
+      const dy = Math.abs(window.scrollY - lastY);
+      const dt = Math.max(16, now - lastT);
+      const velocity = Math.min(1, dy / dt * 0.12);
+      parallaxLayer.style.transform = `translate3d(0, ${window.scrollY * -0.07}px, 0) scale(${1 + velocity * 0.04})`;
+      lastY = window.scrollY;
+      lastT = now;
 
       stages.forEach((stage) => {
         const r = stage.getBoundingClientRect();
