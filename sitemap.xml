@@ -2,55 +2,79 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://bogdan-lab.ru/</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://bogdan-lab.ru/qa-automation</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bogdan-lab.ru/devops-automation</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bogdan-lab.ru/en.html</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-12</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://bogdan-lab.ru/privacy.html</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bogdan-lab.ru/privacy-en.html</loc>
+    <lastmod>2026-03-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://bogdan-lab.ru/terms.html</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bogdan-lab.ru/terms-en.html</loc>
+    <lastmod>2026-03-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://bogdan-lab.ru/consent.html</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://bogdan-lab.ru/consent-en.html</loc>
+    <lastmod>2026-03-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://bogdan-lab.ru/cookies.html</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://bogdan-lab.ru/cookies-en.html</loc>
+    <lastmod>2026-03-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://bogdan-lab.ru/offer.html</loc>
-    <lastmod>2026-03-05</lastmod>
+    <lastmod>2026-03-12</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
