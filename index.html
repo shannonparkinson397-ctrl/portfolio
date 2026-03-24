@@ -2,929 +2,1224 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <!-- Yandex.Metrika counter -->
-  <script type="text/javascript">
-    (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-    m[i].l=1*new Date();
-    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
-    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-    (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-    ym(98765432, "init", {
-      clickmap:true,
-      trackLinks:true,
-      accurateTrackBounce:true,
-      webvisor:true
-    });
-  </script>
-  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  <noscript><div><img src="https://mc.yandex.ru/watch/98765432" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-  <!-- /Yandex.Metrika counter -->
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag("js", new Date());
-    gtag("config", "G-XXXXXXXXXX");
-  </script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>Bogdan Lab — AI Automation Studio</title>
-  <meta name="description" content="Bogdan Lab: AI-автоматизация QA/DevOps и операционных процессов. Внедрение за 7–14 дней, с измеримыми KPI и эффектной презентацией продукта." />
-  <meta property="og:title" content="Bogdan Lab — AI Automation Studio" />
-  <meta property="og:description" content="Строим рабочие AI-системы для бизнеса: быстро, красиво, измеримо." />
-  <meta property="og:url" content="https://bogdan-lab.ru/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://bogdan-lab.ru/og-image.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Bogdan Lab — AI Automation Studio" />
-  <meta name="twitter:description" content="AI-инфраструктура под задачи QA/DevOps и контент-операций." />
-  <meta name="twitter:image" content="https://bogdan-lab.ru/og-image.png" />
-  <link rel="canonical" href="https://bogdan-lab.ru/" />
-  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bogdan Lab — AI Automation Studio | WOW Edition 2026</title>
+  <meta name="description" content="AI-автоматизация QA/DevOps и операционных процессов. Внедрение за 7–14 дней с измеримыми KPI." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Unbounded:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;700;800&family=Unbounded:wght@400;500;700;900&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg: #06070d;
-      --bg-soft: #0c1120;
-      --card: rgba(18, 24, 43, 0.62);
-      --line: rgba(130, 153, 230, 0.22);
-      --text: #eef2ff;
-      --muted: #9ca7c8;
-      --aqua: #5ef2d0;
-      --violet: #8a78ff;
-      --rose: #ff78b9;
-      --shadow: 0 20px 80px rgba(5, 9, 20, 0.55);
+      --bg: #030407;
+      --bg-soft: #0a0f1d;
+      --card: rgba(15, 23, 42, 0.75);
+      --line: rgba(140, 165, 255, 0.18);
+      --line-bright: rgba(140, 165, 255, 0.45);
+      --text: #f0f4ff;
+      --muted: #8a96b8;
+      --aqua: #00f5d4;
+      --cyan: #00d9ff;
+      --violet: #7b61ff;
+      --purple: #a855f7;
+      --rose: #ff4d8d;
+      --orange: #ff8a00;
+      --gold: #ffd700;
+      --shadow: 0 30px 100px rgba(0, 0, 0, 0.7);
+      --glow-spread: 0 0 120px rgba(120, 180, 255, 0.4);
     }
 
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-
-    body { scroll-snap-type: none; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
 
     body {
-      margin: 0;
       font-family: "Manrope", sans-serif;
       color: var(--text);
-      background:
-        radial-gradient(1200px 720px at 90% -20%, rgba(96, 124, 255, 0.28) 0%, transparent 60%),
-        radial-gradient(900px 540px at -10% 20%, rgba(84, 235, 205, 0.2) 0%, transparent 62%),
-        linear-gradient(180deg, #05060a 0%, #070b15 42%, #05070e 100%);
+      background: var(--bg);
       overflow-x: hidden;
+      line-height: 1.6;
     }
 
-    .noise::before {
-      content: "";
+    /* === BACKGROUND LAYERS === */
+    .bg-fixed {
       position: fixed;
       inset: 0;
-      pointer-events: none;
-      background-image: radial-gradient(rgba(255,255,255,0.05) 0.5px, transparent 0.5px);
-      background-size: 3px 3px;
-      opacity: .18;
-      z-index: 1;
-    }
-
-    .glow {
-      position: fixed;
-      width: 42vw;
-      height: 42vw;
-      border-radius: 50%;
-      filter: blur(56px);
       z-index: 0;
       pointer-events: none;
-      opacity: .34;
-      animation: drift 18s ease-in-out infinite;
     }
 
-    .glow.a { background: #7f6bff; top: -15vw; right: -10vw; }
-    .glow.b { background: #46e9cc; bottom: -20vw; left: -16vw; animation-delay: -6s; }
-    .glow.c { background: #ff79be; top: 36%; left: 40%; width: 20vw; height: 20vw; animation-delay: -12s; }
-
-    .kinetic-runner {
-      position: fixed;
-      left: -26vw;
-      top: 72vh;
-      width: 22vw;
-      min-width: 170px;
-      max-width: 320px;
-      height: 4px;
-      border-radius: 999px;
-      z-index: 4;
-      pointer-events: none;
-      background: linear-gradient(90deg, transparent 0%, rgba(94,242,208,.9) 35%, rgba(255,120,185,.88) 70%, transparent 100%);
-      box-shadow: 0 0 22px rgba(114, 199, 255, .55);
-      animation: runner 13s cubic-bezier(.4,.05,.6,.95) infinite, beat 2.4s ease-in-out infinite;
+    .bg-gradient {
+      background:
+        radial-gradient(1400px 800px at 80% -10%, rgba(123, 97, 255, 0.25) 0%, transparent 65%),
+        radial-gradient(1000px 600px at -5% 30%, rgba(0, 217, 255, 0.18) 0%, transparent 70%),
+        radial-gradient(800px 500px at 50% 100%, rgba(255, 77, 141, 0.15) 0%, transparent 60%),
+        linear-gradient(180deg, #020204 0%, #04060d 35%, #03050a 65%, #020306 100%);
     }
 
-    .cursor-orb {
-      position: fixed;
-      width: 52px;
-      height: 52px;
+    .bg-grid {
+      background-image:
+        linear-gradient(rgba(140, 165, 255, 0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(140, 165, 255, 0.04) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.5;
+    }
+
+    .bg-noise {
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.04;
+    }
+
+    /* === ANIMATED GLOW ORBS === */
+    .glow-orb {
+      position: absolute;
       border-radius: 50%;
-      z-index: 6;
+      filter: blur(80px);
+      opacity: 0.4;
+      animation: float 20s ease-in-out infinite;
+    }
+
+    .glow-orb-1 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(123, 97, 255, 0.5), transparent 70%);
+      top: -200px;
+      right: -100px;
+      animation-delay: 0s;
+    }
+
+    .glow-orb-2 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(0, 245, 212, 0.4), transparent 70%);
+      bottom: -150px;
+      left: -100px;
+      animation-delay: -7s;
+    }
+
+    .glow-orb-3 {
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(255, 77, 141, 0.4), transparent 70%);
+      top: 50%;
+      left: 50%;
+      animation-delay: -14s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -40px) scale(1.08); }
+      50% { transform: translate(-20px, 30px) scale(0.95); }
+      75% { transform: translate(40px, 20px) scale(1.03); }
+    }
+
+    /* === PARTICLES === */
+    .particles {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
       pointer-events: none;
-      left: 0;
+    }
+
+    .particle {
+      position: absolute;
+      width: 3px;
+      height: 3px;
+      background: rgba(140, 165, 255, 0.6);
+      border-radius: 50%;
+      animation: particleFloat 15s linear infinite;
+    }
+
+    @keyframes particleFloat {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(720deg); opacity: 0; }
+    }
+
+    /* === SCROLL PROGRESS === */
+    .scroll-progress {
+      position: fixed;
       top: 0;
-      will-change: transform;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.8), rgba(126,145,255,.35) 45%, rgba(94,242,208,.22) 70%, rgba(94,242,208,0) 100%);
-      box-shadow: 0 0 24px rgba(110, 192, 255, .5), inset 0 0 12px rgba(255,255,255,.25);
-      mix-blend-mode: screen;
-      transition: width .25s ease, height .25s ease, opacity .25s ease;
-      opacity: .9;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.05);
     }
 
-    @keyframes runner {
-      0% { transform: translateX(0) scaleX(.7); opacity: 0; }
-      8% { opacity: 1; }
-      45% { transform: translateX(58vw) scaleX(1); }
-      50% { transform: translateX(64vw) scaleX(-1); }
-      92% { transform: translateX(118vw) scaleX(-1); opacity: 1; }
-      100% { transform: translateX(128vw) scaleX(-1); opacity: 0; }
+    .scroll-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--aqua), var(--cyan), var(--violet), var(--rose));
+      box-shadow: 0 0 20px rgba(0, 245, 212, 0.6);
+      transition: width 0.1s linear;
     }
 
-    @keyframes spinAura {
-      from { transform: rotate(0deg) scale(1); }
-      50% { transform: rotate(180deg) scale(1.06); }
-      to { transform: rotate(360deg) scale(1); }
-    }
-
-    @keyframes sweep {
-      0% { transform: translateX(-120%); opacity: 0; }
-      24% { opacity: .7; }
-      100% { transform: translateX(120%); opacity: 0; }
-    }
-
-    @keyframes beat {
-      0%, 100% { filter: brightness(1) saturate(1); }
-      50% { filter: brightness(1.16) saturate(1.22); }
-    }
-
-    @keyframes drift {
-      0%,100% { transform: translate(0,0) scale(1); }
-      33% { transform: translate(-22px, 15px) scale(1.07); }
-      66% { transform: translate(14px, -20px) scale(.95); }
-    }
-
+    /* === CONTAINER === */
     .container {
-      width: min(1160px, 92vw);
+      max-width: 1200px;
       margin: 0 auto;
+      padding: 0 24px;
       position: relative;
       z-index: 2;
-      padding-left: max(0px, env(safe-area-inset-left));
-      padding-right: max(0px, env(safe-area-inset-right));
     }
 
-    .topbar {
+    /* === HEADER === */
+    .header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 24px 0 8px;
+      padding: 24px 0;
+      backdrop-filter: blur(10px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: linear-gradient(180deg, rgba(3, 4, 7, 0.9) 0%, transparent 100%);
     }
 
-    .top-actions { display:flex; align-items:center; gap:10px; }
-    .lang-switch { font-size:12px; color:#b8c6e6; }
-    .lang-switch a { color:#b8c6e6; text-decoration:none; }
-    .lang-switch a:hover { color:#fff; }
-
-    .brand {
+    .logo {
       font-family: "Unbounded", sans-serif;
-      font-size: 17px;
-      letter-spacing: .7px;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 1px;
     }
 
-    .brand span {
-      background: linear-gradient(90deg, var(--aqua), #83bcff, var(--rose));
+    .logo span {
+      background: linear-gradient(90deg, var(--aqua), var(--cyan), var(--violet));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
 
-    .status {
-      border: 1px solid var(--line);
-      background: rgba(13, 18, 34, 0.7);
-      color: var(--muted);
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 12px;
-    }
-
-    .hero {
-      min-height: 84vh;
-      display: grid;
-      grid-template-columns: 1fr;
-      place-items: center;
-      text-align: center;
-      padding: 42px 0 18px;
-      position: relative;
-      overflow: hidden;
-      z-index: 3;
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: -20% -10%;
-      background: conic-gradient(from 120deg, rgba(100,130,255,.24), rgba(84,235,205,.22), rgba(255,120,185,.2), rgba(100,130,255,.24));
-      filter: blur(46px);
-      animation: spinAura 16s linear infinite;
-      opacity: .55;
-      z-index: -1;
-    }
-
-    .badge {
-      display: inline-flex;
-      gap: 8px;
+    .nav-links {
+      display: flex;
+      gap: 24px;
       align-items: center;
-      padding: 8px 14px;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--aqua), var(--violet));
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .lang-switch {
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .lang-switch a {
+      color: var(--muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .lang-switch a:hover {
+      color: var(--text);
+    }
+
+    /* === HERO SECTION === */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 24px 60px;
+      position: relative;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
       border-radius: 999px;
-      border: 1px solid rgba(127, 155, 255, .35);
-      background: rgba(12, 16, 32, .64);
-      color: #bbcaf0;
-      font-size: 12px;
-      margin-bottom: 20px;
-      backdrop-filter: blur(8px);
+      border: 1px solid rgba(0, 245, 212, 0.3);
+      background: rgba(0, 245, 212, 0.08);
+      color: var(--aqua);
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 24px;
+      animation: pulse 3s ease-in-out infinite;
     }
 
-    h1 {
-      margin: 0;
-      max-width: 980px;
-      font-size: clamp(34px, 7vw, 84px);
-      line-height: .98;
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(0, 245, 212, 0.4); }
+      50% { box-shadow: 0 0 0 12px rgba(0, 245, 212, 0); }
+    }
+
+    .hero h1 {
       font-family: "Unbounded", sans-serif;
-      letter-spacing: -1.8px;
+      font-size: clamp(42px, 8vw, 96px);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
     }
 
-    .grad {
-      background: linear-gradient(100deg, #ffffff 10%, #cfd9ff 38%, #90f0dd 60%, #f6aad8 92%);
+    .gradient-text {
+      background: linear-gradient(100deg, var(--text) 0%, var(--cyan) 25%, var(--aqua) 45%, var(--violet) 70%, var(--rose) 100%);
+      background-size: 200% auto;
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      animation: gradientShift 5s ease infinite;
     }
 
-    .lead {
-      margin: 22px auto 0;
-      max-width: 760px;
+    @keyframes gradientShift {
+      0%, 100% { background-position: 0% center; }
+      50% { background-position: 100% center; }
+    }
+
+    .hero-lead {
+      font-size: clamp(18px, 2.5vw, 22px);
       color: var(--muted);
-      font-size: clamp(16px, 2vw, 20px);
-      line-height: 1.56;
+      max-width: 720px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
     }
 
-    .actions {
-      margin-top: 32px;
+    /* === CTA BUTTONS === */
+    .cta-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 16px;
       justify-content: center;
+      margin-bottom: 48px;
     }
 
     .btn {
-      text-decoration: none;
-      color: #dce7ff;
-      border: 1px solid var(--line);
-      background: rgba(11, 17, 34, .64);
-      border-radius: 14px;
-      padding: 12px 18px;
-      font-weight: 700;
-      font-size: 14px;
-      transition: .3s ease;
-      backdrop-filter: blur(7px);
-      transform: translateY(0);
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-      border-color: rgba(151, 174, 255, 0.52);
-      box-shadow: 0 12px 24px rgba(24, 38, 71, 0.45);
-    }
-
-    .btn.primary {
-      border: 0;
-      color: #06111a;
-      background: linear-gradient(95deg, var(--aqua), #9bccff 48%, #ff92c8 100%);
-      box-shadow: 0 10px 24px rgba(104, 199, 255, .36);
-    }
-
-    .kpis {
-      margin-top: 34px;
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      width: min(900px, 100%);
-    }
-
-    .kpi {
-      border: 1px solid var(--line);
-      background: var(--card);
-      border-radius: 16px;
-      padding: 16px;
-      box-shadow: var(--shadow);
-      text-align: left;
-      backdrop-filter: blur(8px);
-    }
-
-    .kpi b {
-      display: block;
-      font-size: clamp(20px, 3vw, 28px);
-      margin-bottom: 4px;
-      font-family: "Unbounded", sans-serif;
-    }
-
-    .kpi span { color: var(--muted); font-size: 13px; }
-
-    section.block { margin: 30px 0; position: relative; min-height: auto; display: block; }
-
-    section.block::before {
-      content: "";
-      position: absolute;
-      left: 6%;
-      right: 6%;
-      top: -18px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(136,160,240,.45), rgba(114,228,210,.45), transparent);
-      opacity: .7;
-    }
-
-    .parallax-layer {
-      position: fixed;
-      inset: 0;
-      z-index: 1;
-      pointer-events: none;
-      mix-blend-mode: screen;
-      opacity: .33;
-      background:
-        radial-gradient(46vw 24vw at 18% 18%, rgba(142,122,255,.42), transparent 60%),
-        radial-gradient(37vw 20vw at 82% 72%, rgba(94,242,208,.36), transparent 60%),
-        linear-gradient(120deg, rgba(255,120,185,.13), transparent 45%);
-      transform: translate3d(0,0,0);
-      transition: transform .12s linear;
-    }
-
-    .vignette {
-      position: fixed;
-      inset: 0;
-      z-index: 2;
-      pointer-events: none;
-      background: radial-gradient(circle at center, transparent 45%, rgba(2,4,10,.46) 100%);
-    }
-
-    .panel {
-      position: relative;
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      background: linear-gradient(160deg, rgba(12,18,35,.82), rgba(10,14,25,.52));
-      padding: clamp(20px, 3vw, 30px);
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-    }
-
-    h2 {
-      margin: 0 0 10px;
-      font-family: "Unbounded", sans-serif;
-      letter-spacing: -.5px;
-      font-size: clamp(24px, 3.3vw, 44px);
-    }
-
-    .sub { margin: 0 0 20px; color: var(--muted); font-size: 15px; }
-
-    .grid3 {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    .card {
-      border: 1px solid rgba(128, 151, 228, 0.2);
-      background: rgba(8, 14, 28, .64);
-      border-radius: 15px;
-      padding: 14px;
-      transition: transform .35s ease, border-color .35s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(152, 173, 245, 0.5);
-    }
-
-    .card h3 { margin: 0 0 8px; font-size: 18px; }
-    .card p { margin: 0; color: var(--muted); line-height: 1.48; font-size: 14px; }
-
-    .flow {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
+      display: inline-flex;
+      align-items: center;
       gap: 10px;
-      counter-reset: s;
-    }
-
-    .step {
-      border-radius: 14px;
-      border: 1px dashed rgba(139, 161, 240, 0.42);
-      background: rgba(9, 15, 29, 0.52);
-      padding: 12px;
+      padding: 16px 28px;
+      border-radius: 16px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer;
+      border: none;
       position: relative;
       overflow: hidden;
     }
 
-    .step::before {
-      counter-increment: s;
-      content: "0" counter(s);
+    .btn::before {
+      content: '';
       position: absolute;
-      right: 10px;
-      top: 8px;
-      color: rgba(168, 183, 231, .3);
+      inset: 0;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+    }
+
+    .btn:hover::before {
+      transform: translateX(100%);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--aqua) 0%, var(--cyan) 50%, var(--violet) 100%);
+      color: #000;
+      box-shadow: 0 10px 40px rgba(0, 245, 212, 0.4);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0, 245, 212, 0.5);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text);
+      border: 1px solid var(--line);
+      backdrop-filter: blur(10px);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      border-color: var(--line-bright);
+      transform: translateY(-4px);
+    }
+
+    /* === KPI CARDS === */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .kpi-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 24px;
+      text-align: center;
+      backdrop-filter: blur(20px);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kpi-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .kpi-card:hover::before {
+      left: 100%;
+    }
+
+    .kpi-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--line-bright);
+      box-shadow: 0 20px 50px rgba(0, 245, 212, 0.15);
+    }
+
+    .kpi-value {
+      font-family: "Unbounded", sans-serif;
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--aqua), var(--cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .kpi-label {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* === SECTIONS === */
+    .section {
+      padding: 120px 0;
+      position: relative;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--aqua);
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-family: "Unbounded", sans-serif;
+      font-size: clamp(32px, 5vw, 56px);
+      font-weight: 700;
+      line-height: 1.15;
+      letter-spacing: -1px;
+    }
+
+    /* === SERVICES GRID === */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 32px;
+      backdrop-filter: blur(20px);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      padding: 1px;
+      background: linear-gradient(135deg, transparent, rgba(0, 245, 212, 0.3), transparent);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .service-card:hover::after {
+      opacity: 1;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      border-color: transparent;
+      box-shadow: 0 30px 80px rgba(0, 245, 212, 0.15);
+    }
+
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(0, 245, 212, 0.2), rgba(0, 217, 255, 0.2));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      margin-bottom: 24px;
+    }
+
+    .service-title {
+      font-family: "Unbounded", sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .service-desc {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 15px;
+    }
+
+    /* === PROCESS TIMELINE === */
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(180deg, var(--aqua), var(--violet), var(--rose));
+      border-radius: 2px;
+    }
+
+    .timeline-item {
+      display: flex;
+      justify-content: flex-end;
+      padding: 20px 0;
+      position: relative;
+      width: 50%;
+    }
+
+    .timeline-item:nth-child(odd) {
+      align-self: flex-start;
+      padding-right: 40px;
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(even) {
+      align-self: flex-end;
+      justify-content: flex-start;
+      padding-left: 40px;
+      margin-left: 50%;
+      text-align: left;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--aqua);
+      box-shadow: 0 0 20px var(--aqua);
+      top: 28px;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-dot {
+      right: -8px;
+    }
+
+    .timeline-item:nth-child(even) .timeline-dot {
+      left: -8px;
+    }
+
+    .timeline-content {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 24px;
+      backdrop-filter: blur(20px);
+      max-width: 360px;
+      transition: all 0.3s ease;
+    }
+
+    .timeline-content:hover {
+      transform: scale(1.05);
+      border-color: var(--line-bright);
+    }
+
+    .timeline-step {
+      font-family: "Unbounded", sans-serif;
+      font-size: 12px;
+      color: var(--aqua);
+      margin-bottom: 8px;
+    }
+
+    .timeline-title {
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .timeline-desc {
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    /* === PRICING === */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      padding: 40px 32px;
+      backdrop-filter: blur(20px);
+      text-align: center;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .pricing-card.featured {
+      border-color: var(--aqua);
+      box-shadow: 0 0 60px rgba(0, 245, 212, 0.2);
+    }
+
+    .pricing-card.featured::before {
+      content: 'ПОПУЛЯРНЫЙ';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(135deg, var(--aqua), var(--cyan));
+      color: #000;
+      padding: 6px 16px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-12px);
+    }
+
+    .pricing-name {
       font-family: "Unbounded", sans-serif;
       font-size: 20px;
+      font-weight: 700;
+      margin-bottom: 8px;
     }
 
-    .step b { display: block; margin-bottom: 7px; }
-    .step span { color: var(--muted); font-size: 14px; }
+    .pricing-price {
+      font-size: 48px;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--aqua), var(--cyan));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 24px;
+    }
 
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 32px;
+      text-align: left;
+    }
+
+    .pricing-features li {
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .pricing-features li::before {
+      content: '✓';
+      color: var(--aqua);
+      font-weight: 700;
+      margin-right: 12px;
+    }
+
+    /* === FOOTER === */
     .footer {
-      margin: 26px 0 34px;
+      border-top: 1px solid var(--line);
+      padding: 60px 0 40px;
+      margin-top: 80px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand {
+      font-family: "Unbounded", sans-serif;
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand span {
+      background: linear-gradient(90deg, var(--aqua), var(--violet));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .footer-desc {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .footer-links h4 {
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .footer-links a {
+      display: block;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 14px;
+      padding: 8px 0;
+      transition: color 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--aqua);
+    }
+
+    .footer-bottom {
       display: flex;
       justify-content: space-between;
-      gap: 8px;
-      color: var(--muted);
+      align-items: center;
+      padding-top: 32px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
       font-size: 13px;
-      flex-wrap: wrap;
+      color: var(--muted);
     }
 
-    .footer a {
-      color: #a9b7d8;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(169,183,216,.35);
+    /* === ANIMATIONS ON SCROLL === */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    .footer a:hover {
-      color: #d7e4ff;
-      border-bottom-color: rgba(215,228,255,.7);
-    }
-
-    .scroll-progress {
-      position: fixed;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 3px;
-      z-index: 20;
-      background: rgba(255,255,255,.06);
-      backdrop-filter: blur(4px);
-    }
-
-    .scroll-progress > i {
-      display: block;
-      height: 100%;
-      width: 0%;
-      background: linear-gradient(90deg, var(--aqua), #94b7ff 50%, var(--rose));
-      box-shadow: 0 0 14px rgba(130,180,255,.6);
-      transition: width .06s linear;
-    }
-
-    .panel.stage {
-      transition: border-color .25s ease, box-shadow .25s ease;
+    .reveal.active {
       opacity: 1;
-      filter: none;
-      clip-path: none;
+      transform: translateY(0);
     }
 
-    .panel.stage.active {
-      border-color: rgba(154, 175, 248, 0.42);
-      box-shadow: 0 22px 60px rgba(7, 14, 31, .52);
+    /* === RESPONSIVE === */
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 20px;
+      }
+
+      .timeline-item,
+      .timeline-item:nth-child(odd),
+      .timeline-item:nth-child(even) {
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 0;
+        margin-left: 0;
+        text-align: left;
+      }
+
+      .timeline-item:nth-child(odd) .timeline-dot,
+      .timeline-item:nth-child(even) .timeline-dot {
+        left: 12px;
+        right: auto;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 40px;
+      }
     }
 
-    .scene-cut {
+    /* === CURSOR TRAIL === */
+    .cursor-trail {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(0, 245, 212, 0.6), transparent 70%);
+      pointer-events: none;
+      z-index: 9999;
+      mix-blend-mode: screen;
+      transition: transform 0.1s ease;
       display: none;
     }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(22px) scale(.99);
-      transition: opacity .8s ease, transform .8s cubic-bezier(.2,.8,.2,1);
-    }
-
-    .reveal.show {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-
-    
-    .floating-cta {
-      position: fixed;
-      right: 16px;
-      bottom: calc(16px + env(safe-area-inset-bottom));
-      z-index: 25;
-      padding: 12px 14px;
-      border-radius: 12px;
-      border: 0;
-      color: #041018;
-      font-weight: 800;
-      text-decoration: none;
-      font-size: 13px;
-      background: linear-gradient(95deg, var(--aqua), #9bccff 48%, #ff92c8 100%);
-      box-shadow: 0 12px 28px rgba(72, 170, 255, .42);
-    }
-
-    .trust-row {
-      display:grid;
-      grid-template-columns: repeat(4,minmax(0,1fr));
-      gap:10px;
-      margin-top:14px;
-    }
-
-    .trust-pill {
-      border:1px solid rgba(128,151,228,.25);
-      background: rgba(8, 14, 28, .64);
-      border-radius: 12px;
-      padding: 10px;
-      font-size: 12px;
-      color: var(--muted);
-      text-align:center;
-    }
-
-    .faq details {
-      border: 1px solid rgba(128,151,228,.25);
-      border-radius: 12px;
-      padding: 12px;
-      background: rgba(8,14,28,.56);
-    }
-    .faq details + details { margin-top: 8px; }
-    .faq summary { cursor:pointer; font-weight:700; }
-    .faq p { color: var(--muted); margin: 8px 0 0; }
-
-    @media (max-width: 980px) {
-      .kpis, .grid3 { grid-template-columns: 1fr; }
-      .flow { grid-template-columns: 1fr 1fr; }
-      .hero { min-height: 72vh; padding-top: 20px; position: relative; }
-      .panel.stage { transition: transform .22s ease, border-color .25s ease, box-shadow .25s ease; }
-      .kinetic-runner { animation-duration: 16s, 2.8s; opacity: .72; }
-    }
-
-    @media (max-width: 640px) {
-      .topbar { gap: 10px; align-items: flex-start; flex-direction: column; }
-      .flow { grid-template-columns: 1fr; }
-      .actions { justify-content: stretch; }
-      .btn { width: 100%; text-align: center; justify-content: center; }
-      .kinetic-runner { top: 86vh; opacity: .6; }
-      .cursor-orb, .scene-cut, .floating-cta { display: none; }
-      body { scroll-snap-type: none; }
-      section.block { min-height: auto; margin: 24px 0; }
-      .panel.stage { transform: none !important; filter: none; opacity: 1; clip-path: none; }
-      h1 { letter-spacing: -1.1px; }
-      .lead { font-size: 16px; }
-      .kpi { padding: 14px; }
-    }
-
-    @media (hover: none) and (pointer: coarse) {
-      .btn:hover, .card:hover { transform: none !important; box-shadow: none; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      * { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
-      html { scroll-behavior: auto; }
-      .cursor-orb, .kinetic-runner, .scene-cut, .glow { display: none !important; }
-      .panel.stage { transform: none !important; filter: none !important; opacity: 1 !important; clip-path: none !important; }
+    @media (pointer: fine) {
+      .cursor-trail {
+        display: block;
+      }
     }
   </style>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "ProfessionalService",
-        "name": "Bogdan Lab",
-        "url": "https://bogdan-lab.ru/",
-        "serviceType": "AI automation, QA and DevOps workflows",
-        "areaServed": "Remote"
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Сколько занимает запуск MVP?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Обычно 7–14 дней до рабочего MVP с логами и измеримыми KPI."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Для кого это решение?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Для фаундеров и команд, которые хотят убрать ручную рутину и ускорить delivery через AI-процессы."
-            }
-          }
-      },
-      {
-        "@type": "CreativeWork",
-        "name": "Bounty Monitor",
-        "description": "Автоматический мониторинг и фильтрация high-value задач: меньше мусора, выше сигнал для команды.",
-        "author": {
-          "@type": "Organization",
-          "name": "Bogdan Lab"
-        }
-      },
-      {
-        "@type": "CreativeWork",
-        "name": "Universal Bot (Robik)",
-        "description": "Операционный ИИ-ассистент: healthchecks, отчёты, routing задач и контроль исполнения в одном контуре.",
-        "author": {
-          "@type": "Organization",
-          "name": "Bogdan Lab"
-        }
-      },
-      {
-        "@type": "CreativeWork",
-        "name": "AgentMarket Ops",
-        "description": "Стабильность backend-потоков, снижение ручного админ-шума и предсказуемая ежедневная эксплуатация.",
-        "author": {
-          "@type": "Organization",
-          "name": "Bogdan Lab"
-        }
-        ]
-      }
-    ]
-  }
-  </script>
-  <link rel="alternate" hreflang="ru" href="https://bogdan-lab.ru/" />
-  <link rel="alternate" hreflang="en" href="https://bogdan-lab.ru/en.html" />
-  <link rel="alternate" hreflang="x-default" href="https://bogdan-lab.ru/" />
 </head>
-<body class="noise">
-  <div class="scroll-progress" aria-hidden="true"><i id="scrollProgress"></i></div>
-  <div class="scene-cut" aria-hidden="true" id="sceneCut"></div>
-  <div class="glow a"></div>
-  <div class="glow b"></div>
-  <div class="glow c"></div>
+<body>
+  <!-- Background -->
+  <div class="bg-fixed bg-gradient"></div>
+  <div class="bg-fixed bg-grid"></div>
+  <div class="bg-fixed bg-noise"></div>
 
-  <div class="parallax-layer" aria-hidden="true" id="parallaxLayer"></div>
-  <div class="vignette" aria-hidden="true"></div>
-  <div class="kinetic-runner" aria-hidden="true"></div>
-  <div class="cursor-orb" aria-hidden="true" id="cursorOrb"></div>
+  <!-- Animated Orbs -->
+  <div class="bg-fixed">
+    <div class="glow-orb glow-orb-1"></div>
+    <div class="glow-orb glow-orb-2"></div>
+    <div class="glow-orb glow-orb-3"></div>
+  </div>
 
-  <main class="container">
-    <header class="topbar reveal">
-      <div class="brand">BOGDAN<span>.LAB</span></div>
-      <div class="top-actions">
-        <div class="lang-switch"><a href="/">RU</a> / <a href="/en.html">EN</a></div>
-        <div class="status">SYSTEM ONLINE · BUILD → MEASURE → SCALE</div>
+  <!-- Particles -->
+  <div class="particles" id="particles"></div>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-progress">
+    <div class="scroll-progress-bar" id="scrollProgress"></div>
+  </div>
+
+  <!-- Cursor Trail -->
+  <div class="cursor-trail" id="cursorTrail"></div>
+
+  <!-- Header -->
+  <header class="container header">
+    <div class="logo">BOGDAN<span>.LAB</span></div>
+    <nav class="nav-links">
+      <a href="#services">Услуги</a>
+      <a href="#process">Процесс</a>
+      <a href="#pricing">Тарифы</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+    <div class="lang-switch">
+      <a href="#">RU</a> / <a href="/en.html">EN</a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <span>⚡</span> AI AUTOMATION STUDIO
       </div>
-    </header>
 
-    <section class="hero reveal">
-      <div>
-        <div class="badge">AI Automation Studio · QA · DevOps · Ops</div>
-        <h1>Внедряю <span class="grad">AI-автоматизацию</span> в процессы бизнеса за 7–14 дней</h1>
-        <p class="lead">
-          Если релизы тормозят, QA/DevOps съедают время, а операционка тонет в ручной рутине —
-          собираю рабочий контур с метриками и понятной экономикой результата.
+      <h1>
+        <span class="gradient-text">AI-автоматизация</span><br>
+        вашего бизнеса за 7–14 дней
+      </h1>
+
+      <p class="hero-lead">
+        Если релизы тормозят, QA/DevOps съедают время, а операционка тонет в ручной рутине —
+        собираю рабочий контур с метриками и понятной экономикой результата.
+      </p>
+
+      <div class="cta-row">
+        <a href="https://t.me/bogdan_sys" class="btn btn-primary">
+          Получить аудит →
+        </a>
+        <a href="#process" class="btn btn-secondary">
+          Как это работает
+        </a>
+      </div>
+
+      <div class="kpi-grid">
+        <div class="kpi-card reveal">
+          <span class="kpi-value">7–14</span>
+          <span class="kpi-label">дней до запуска</span>
+        </div>
+        <div class="kpi-card reveal">
+          <span class="kpi-value">20–40ч</span>
+          <span class="kpi-label">экономии в месяц</span>
+        </div>
+        <div class="kpi-card reveal">
+          <span class="kpi-value">1×</span>
+          <span class="kpi-label">созвон для старта</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services Section -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Что я делаю</span>
+        <h2 class="section-title">Комплексная автоматизация<br><span class="gradient-text">на базе AI</span></h2>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card reveal">
+          <div class="service-icon">🤖</div>
+          <h3 class="service-title">AI-ассистенты</h3>
+          <p class="service-desc">
+            Умные боты для поддержки, продаж и внутренних процессов.
+            Интеграция с Telegram, Slack, CRM.
+          </p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">⚙️</div>
+          <h3 class="service-title">DevOps автоматизация</h3>
+          <p class="service-desc">
+            CI/CD пайплайны, мониторинг, алертинг.
+            Автоматическое тестирование и деплой.
+          </p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">📊</div>
+          <h3 class="service-title">QA автоматизация</h3>
+          <p class="service-desc">
+            Автотесты для веб, API и мобильных приложений.
+            Снижение времени регрессии в 5–10 раз.
+          </p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">🔗</div>
+          <h3 class="service-title">Интеграции</h3>
+          <p class="service-desc">
+            Связка разрозненных систем в единый контур.
+            API, вебхуки, синхронизация данных.
+          </p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">📈</div>
+          <h3 class="service-title">Аналитика и дашборды</h3>
+          <p class="service-desc">
+            Визуализация метрик, отчёты в реальном времени.
+            Grafana, Metabase, кастомные решения.
+          </p>
+        </div>
+
+        <div class="service-card reveal">
+          <div class="service-icon">🎯</div>
+          <h3 class="service-title">Аудит процессов</h3>
+          <p class="service-desc">
+            Полный разбор текущих процессов.
+            Поиск точек автоматизации, roadmap внедрения.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Process Section -->
+  <section class="section" id="process">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Как мы работаем</span>
+        <h2 class="section-title">Процесс<br><span class="gradient-text">от идеи до запуска</span></h2>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-step">ШАГ 01</div>
+            <h4 class="timeline-title">Аудит и стратегия</h4>
+            <p class="timeline-desc">
+              Разбираем ваши процессы, находим узкие места,
+              определяем KPI автоматизации.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-step">ШАГ 02</div>
+            <h4 class="timeline-title">Прототип MVP</h4>
+            <p class="timeline-desc">
+              Быстрый прототип ключевого функционала
+              для проверки гипотез и получения фидбека.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-step">ШАГ 03</div>
+            <h4 class="timeline-title">Разработка</h4>
+            <p class="timeline-desc">
+              Полноценная реализация с тестами,
+              документацией и интеграциями.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-step">ШАГ 04</div>
+            <h4 class="timeline-title">Запуск и поддержка</h4>
+            <p class="timeline-desc">
+              Деплой в продакшен, мониторинг,
+              оперативная поддержка и доработки.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="section" id="pricing">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Инвестиции</span>
+        <h2 class="section-title">Прозрачные<br><span class="gradient-text">тарифы</span></h2>
+      </div>
+
+      <div class="pricing-grid">
+        <div class="pricing-card reveal">
+          <h3 class="pricing-name">Старт</h3>
+          <div class="pricing-price">50K</div>
+          <ul class="pricing-features">
+            <li>Аудит процессов (4 часа)</li>
+            <li>Roadmap автоматизации</li>
+            <li>Прототип MVP (1 модуль)</li>
+            <li>Базовая документация</li>
+            <li>2 недели поддержки</li>
+          </ul>
+          <a href="https://t.me/bogdan_sys" class="btn btn-secondary" style="width: 100%;">Начать</a>
+        </div>
+
+        <div class="pricing-card featured reveal">
+          <h3 class="pricing-name">Бизнес</h3>
+          <div class="pricing-price">150K</div>
+          <ul class="pricing-features">
+            <li>Полный аудит процессов</li>
+            <li>Детальный план внедрения</li>
+            <li>Разработка 3–5 модулей</li>
+            <li>Интеграции с CRM/ERP</li>
+            <li>Автотесты и CI/CD</li>
+            <li>Документация и обучение</li>
+            <li>1 месяц поддержки</li>
+          </ul>
+          <a href="https://t.me/bogdan_sys" class="btn btn-primary" style="width: 100%;">Начать</a>
+        </div>
+
+        <div class="pricing-card reveal">
+          <h3 class="pricing-name">Про</h3>
+          <div class="pricing-price">300K+</div>
+          <ul class="pricing-features">
+            <li>Комплексная автоматизация</li>
+            <li>Выделенная команда</li>
+            <li>Неограниченно модулей</li>
+            <li>Сложные интеграции</li>
+            <li>AI/ML компоненты</li>
+            <li>Полная документация</li>
+            <li>3 месяца поддержки</li>
+          </ul>
+          <a href="https://t.me/bogdan_sys" class="btn btn-secondary" style="width: 100%;">Обсудить</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-tag">Связаться</span>
+        <h2 class="section-title">Готовы начать?<br><span class="gradient-text">Давайте обсудим</span></h2>
+      </div>
+
+      <div style="text-align: center; max-width: 600px; margin: 0 auto;" class="reveal">
+        <p style="color: var(--muted); font-size: 18px; margin-bottom: 32px; line-height: 1.7;">
+          Напишите мне в Telegram — обсудим ваш проект,
+          определим точки роста и я предложу план автоматизации.
         </p>
 
-        <div class="actions">
-          <a class="btn primary" href="https://t.me/bogdan_sys" target="_blank" rel="noopener">Получить бесплатный mini-аудит</a>
-          <a class="btn" href="https://t.me/bogdan_sys" target="_blank" rel="noopener">Забронировать 15-мин разбор</a>
-          <a class="btn" href="#cases">Смотреть кейсы</a>
-          <a class="btn" href="#offer">Что входит в запуск</a>
+        <div class="cta-row">
+          <a href="https://t.me/bogdan_sys" class="btn btn-primary">
+            Написать в Telegram →
+          </a>
         </div>
 
-        <div class="kpis">
-          <div class="kpi"><b>7–14 дней</b><span>до первого рабочего контура</span></div>
-          <div class="kpi"><b>20–40 ч/мес</b><span>экономии ручных операций</span></div>
-          <div class="kpi"><b>1 созвон</b><span>и готовый план запуска в Telegram</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="cases" class="block reveal">
-      <div class="panel stage">
-        <h2>Кейсы, где это уже работает</h2>
-        <p class="sub">Практика вместо инфошума. Только рабочие процессы и конкретный эффект.</p>
-        <div class="grid3">
-          <article class="card">
-            <h3>Bounty Monitor</h3>
-            <p>Автоматический мониторинг и фильтрация high-value задач: меньше мусора, выше сигнал для команды.</p>
-          </article>
-          <article class="card">
-            <h3>Universal Bot (Robik)</h3>
-            <p>Операционный ИИ-ассистент: healthchecks, отчёты, routing задач и контроль исполнения в одном контуре.</p>
-          </article>
-          <article class="card">
-            <h3>AgentMarket Ops</h3>
-            <p>Стабильность backend-потоков, снижение ручного админ-шума и предсказуемая ежедневная эксплуатация.</p>
-          </article>
+        <div style="margin-top: 48px; padding: 32px; background: var(--card); border: 1px solid var(--line); border-radius: 20px; backdrop-filter: blur(20px);">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 24px;">
+            <div>
+              <div style="font-size: 32px; font-weight: 800; color: var(--aqua);">50+</div>
+              <div style="color: var(--muted); font-size: 14px;">Проектов</div>
+            </div>
+            <div>
+              <div style="font-size: 32px; font-weight: 800; color: var(--cyan);">7–14</div>
+              <div style="color: var(--muted); font-size: 14px;">Дней запуск</div>
+            </div>
+            <div>
+              <div style="font-size: 32px; font-weight: 800; color: var(--violet);">98%</div>
+              <div style="color: var(--muted); font-size: 14px">Довольных</div>
+            </div>
+          </div>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <section id="offer" class="block reveal">
-      <div class="panel stage">
-        <h2>Что получаешь на выходе</h2>
-        <p class="sub">Формат запуска: аудит → MVP → KPI-гейт. Без лишней теории, только исполнение.</p>
-        <div class="grid3">
-          <article class="card">
-            <h3>MVP за 7–14 дней</h3>
-            <p>Запускаем P0-процесс с логами, ролями и качественным baseline для масштабирования.</p>
-          </article>
-          <article class="card">
-            <h3>Измеримая система</h3>
-            <p>Latency, quality, conversion, SLA — цифры, на основе которых принимаются решения.</p>
-          </article>
-          <article class="card">
-            <h3>Снижение ручной нагрузки</h3>
-            <p>Рутина автоматизируется, команда возвращает фокус на growth-задачи и продукт.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="block reveal">
-      <div class="panel stage">
-        <h2>Как проходит работа</h2>
-        <p class="sub">Короткие циклы, прозрачный контроль, масштаб только после подтверждённого результата.</p>
-        <div class="flow">
-          <div class="step"><b>Аудит</b><span>Фиксируем узкие места, собираем baseline по процессу и потере времени.</span></div>
-          <div class="step"><b>MVP</b><span>Собираем боевой сценарий за 7–14 дней с журналированием и guardrails.</span></div>
-          <div class="step"><b>KPI-гейт</b><span>Сверяем фактический эффект и качество исполнения на данных.</span></div>
-          <div class="step"><b>Масштаб</b><span>Расширяем только то, что доказало ценность по метрикам.</span></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="block reveal">
-      <div class="panel stage">
-        <h2>Старт сегодня</h2>
-        <p class="sub">Напиши в Telegram 3 пункта: текущий процесс, где узкое место, какой результат нужен. Я верну план внедрения и срок.</p>
-        <div class="actions" style="justify-content:flex-start">
-          <a class="btn primary" href="https://t.me/bogdan_sys?text=%D0%9F%D1%80%D0%B8%D0%B2%D0%B5%D1%82%2C%20%D1%85%D0%BE%D1%87%D1%83%20mini-%D0%B0%D1%83%D0%B4%D0%B8%D1%82.%20%0A1)%20%D0%9F%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%3A%20...%0A2)%20%D0%91%D0%BE%D0%BB%D1%8C%3A%20...%0A3)%20%D0%A6%D0%B5%D0%BB%D1%8C%3A%20..." target="_blank" rel="noopener">Получить план запуска</a>
-          <a class="btn" href="https://t.me/bogdan_sys" target="_blank" rel="noopener">Задать вопрос в личке</a>
-          <a class="btn" href="https://github.com/shannonparkinson397-ctrl" target="_blank" rel="noopener">GitHub / проекты</a>
-        </div>
-      </div>
-    </section>
-
-    <section class="block reveal">
-      <div class="panel stage">
-        <h2>Mini-квиз (30 секунд)</h2>
-        <p class="sub">Ответь на 3 вопроса и отправь в Telegram — получишь конкретный план внедрения без воды.</p>
-        <div class="grid3">
-          <article class="card"><h3>1) Где узкое место?</h3><p>QA, релизы, поддержка, контент-операции или коммуникации внутри команды.</p></article>
-          <article class="card"><h3>2) Что болит в цифрах?</h3><p>Сколько часов/неделю теряется, где задержки, какой хаос повторяется чаще всего.</p></article>
-          <article class="card"><h3>3) Какой результат нужен?</h3><p>Скорость запуска, снижение ручной нагрузки, рост качества, контроль KPI.</p></article>
-        </div>
-        <div class="actions" style="justify-content:flex-start; margin-top:14px;">
-          <a class="btn primary" href="https://t.me/bogdan_sys?text=%D0%9E%D1%82%D0%B2%D0%B5%D1%82%D1%8B%20%D0%BF%D0%BE%20mini-%D0%BA%D0%B2%D0%B8%D0%B7%D1%83%3A%0A1)%20%D0%A3%D0%B7%D0%BA%D0%BE%D0%B5%20%D0%BC%D0%B5%D1%81%D1%82%D0%BE%3A%20...%0A2)%20%D0%91%D0%BE%D0%BB%D1%8C%20%D0%B2%20%D1%86%D0%B8%D1%84%D1%80%D0%B0%D1%85%3A%20...%0A3)%20%D0%A6%D0%B5%D0%BB%D1%8C%3A%20..." target="_blank" rel="noopener">Отправить ответы в Telegram</a>
-        </div>
-      </div>
-    </section>
-
-
-    <section class="block reveal faq">
-      <div class="panel stage">
-        <h2>Частые вопросы</h2>
-        <details>
-          <summary>Сколько реально времени до первого результата?</summary>
-          <p>Обычно 7–14 дней до рабочего контура с логами и базовой метрикой эффективности.</p>
-        </details>
-        <details>
-          <summary>Если у нас хаос и нет чётких процессов — это проблема?</summary>
-          <p>Нет. Начинаем с минимального рабочего сценария и быстро наводим порядок через короткие итерации.</p>
-        </details>
-        <details>
-          <summary>Нужна ли большая команда для внедрения?</summary>
-          <p>Нет. Достаточно владельца процесса и 1 ответственного с вашей стороны для согласований.</p>
-        </details>
-      </div>
-    </section>
-
-    <footer class="footer reveal" style="display:block;line-height:1.8">
-      <div>© 2026 Bogdan Lab · Built for operators, not for hype.</div>
+  <!-- Footer -->
+  <footer class="container footer">
+    <div class="footer-content">
       <div>
-        <a href="/privacy.html">Политика ПДн</a> ·
-        <a href="/terms.html">Пользовательское соглашение</a> ·
-        <a href="/consent.html">Согласие на ПДн</a> ·
-        <a href="/cookies.html">Cookies</a> ·
-        <a href="/offer.html">Оферта</a>
+        <div class="footer-brand">BOGDAN<span>.LAB</span></div>
+        <p class="footer-desc">
+          AI-автоматизация для бизнеса.
+          Превращаем рутину в результат.
+        </p>
       </div>
-    </footer>
-  </main>
 
-  <a class="floating-cta" href="https://t.me/bogdan_sys?text=%D0%A5%D0%BE%D1%87%D1%83%20%D0%B7%D0%B0%D0%BF%D1%83%D1%81%D0%BA%20AI-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0.%20%D0%9D%D0%B0%D1%87%D0%BD%D1%91%D0%BC." target="_blank" rel="noopener">Запуск в Telegram</a>
+      <div class="footer-links">
+        <h4>Услуги</h4>
+        <a href="#">AI-ассистенты</a>
+        <a href="#">DevOps</a>
+        <a href="#">QA автоматизация</a>
+        <a href="#">Интеграции</a>
+      </div>
+
+      <div class="footer-links">
+        <h4>Компания</h4>
+        <a href="#process">Процесс</a>
+        <a href="#pricing">Тарифы</a>
+        <a href="#">Кейсы</a>
+        <a href="#contact">Контакты</a>
+      </div>
+
+      <div class="footer-links">
+        <h4>Ресурсы</h4>
+        <a href="#">Блог</a>
+        <a href="#">Документация</a>
+        <a href="#">API</a>
+        <a href="#">Статус</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>© 2026 Bogdan Lab. Все права защищены.</div>
+      <div style="display: flex; gap: 24px;">
+        <a href="#" style="color: var(--muted); text-decoration: none;">Privacy</a>
+        <a href="#" style="color: var(--muted); text-decoration: none;">Terms</a>
+      </div>
+    </div>
+  </footer>
 
   <script>
-    const items = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('show');
-          io.unobserve(entry.target);
+    // Scroll Progress
+    window.addEventListener('scroll', () => {
+      const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+      document.getElementById('scrollProgress').style.width = scrolled + '%';
+    });
+
+    // Reveal on Scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const revealOnScroll = () => {
+      reveals.forEach(el => {
+        const elTop = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (elTop < windowHeight - 100) {
+          el.classList.add('active');
         }
       });
-    }, { threshold: 0.13 });
-    items.forEach((el, idx) => {
-      el.style.transitionDelay = `${Math.min(idx * 90, 360)}ms`;
-      io.observe(el);
-    });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
 
-    const magnetic = document.querySelectorAll('.btn');
-    magnetic.forEach((btn) => {
-      btn.addEventListener('mousemove', (e) => {
-        const r = btn.getBoundingClientRect();
-        const x = e.clientX - r.left - r.width / 2;
-        const y = e.clientY - r.top - r.height / 2;
-        btn.style.transform = `translate(${x * 0.06}px, ${y * 0.09 - 2}px)`;
-      });
-      btn.addEventListener('mouseleave', () => {
-        btn.style.transform = 'translate(0,0)';
-      });
-    });
-
-    const orb = document.getElementById('cursorOrb');
-    const progress = document.getElementById('scrollProgress');
-    const parallaxLayer = document.getElementById('parallaxLayer');
-    const stages = document.querySelectorAll('.panel.stage');
-    let mx = window.innerWidth / 2, my = window.innerHeight / 2;
-    let ox = mx, oy = my;
-
-    window.addEventListener('mousemove', (e) => {
-      mx = e.clientX;
-      my = e.clientY;
-    });
-
-    const hoverables = document.querySelectorAll('a, .card, .kpi');
-    hoverables.forEach((el) => {
-      el.addEventListener('mouseenter', () => {
-        orb.style.width = '82px';
-        orb.style.height = '82px';
-        orb.style.opacity = '.96';
-      });
-      el.addEventListener('mouseleave', () => {
-        orb.style.width = '52px';
-        orb.style.height = '52px';
-        orb.style.opacity = '.9';
-      });
-    });
-
-    let lastY = window.scrollY;
-    let lastT = performance.now();
-
-    function updateStageFx() {
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      const pct = max > 0 ? (window.scrollY / max) * 100 : 0;
-      progress.style.width = `${Math.min(100, Math.max(0, pct))}%`;
-
-      parallaxLayer.style.transform = `translate3d(0, ${window.scrollY * -0.02}px, 0)`;
-      lastY = window.scrollY;
-      lastT = performance.now();
-
-      stages.forEach((stage) => {
-        const r = stage.getBoundingClientRect();
-        const visible = r.top < window.innerHeight * 0.75 && r.bottom > window.innerHeight * 0.25;
-        stage.style.transform = 'none';
-        stage.classList.toggle('active', visible);
-      });
+    // Particles
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 50; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.animationDelay = Math.random() * 15 + 's';
+      particle.style.animationDuration = (15 + Math.random() * 10) + 's';
+      particlesContainer.appendChild(particle);
     }
 
-    function animateOrb() {
-      ox += (mx - ox) * 0.12;
-      oy += (my - oy) * 0.12;
-      orb.style.transform = `translate(${ox - 26}px, ${oy - 26}px)`;
-      requestAnimationFrame(animateOrb);
-    }
+    // Cursor Trail
+    const cursorTrail = document.getElementById('cursorTrail');
+    let trailTimeout;
+    document.addEventListener('mousemove', (e) => {
+      cursorTrail.style.left = e.clientX - 10 + 'px';
+      cursorTrail.style.top = e.clientY - 10 + 'px';
+      cursorTrail.style.transform = 'scale(1)';
+      clearTimeout(trailTimeout);
+      trailTimeout = setTimeout(() => {
+        cursorTrail.style.transform = 'scale(0)';
+      }, 100);
+    });
 
-
-    const allLinks = document.querySelectorAll('a[href^="http"]');
-    allLinks.forEach((a) => {
-      try {
-        const u = new URL(a.href);
-        if (u.hostname.includes('t.me') || u.hostname.includes('github.com')) {
-          if (!u.searchParams.get('utm_source')) {
-            u.searchParams.set('utm_source', 'bogdan-lab');
-            u.searchParams.set('utm_medium', 'site');
-            u.searchParams.set('utm_campaign', 'conversion');
-            a.href = u.toString();
-          }
+    // Smooth scroll for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-      } catch(e) {}
-      a.addEventListener('click', () => {
-        const event = { ts: Date.now(), href: a.getAttribute('href'), text: (a.textContent||'').trim().slice(0,80) };
-        const key='blab_clicks';
-        const arr = JSON.parse(localStorage.getItem(key) || '[]');
-        arr.push(event);
-        localStorage.setItem(key, JSON.stringify(arr.slice(-100)));
       });
     });
-
-    const isMobile = window.matchMedia('(max-width: 640px)').matches;
-
-    window.addEventListener('scroll', updateStageFx, { passive: true });
-    window.addEventListener('resize', updateStageFx);
-    updateStageFx();
-    if (!isMobile) animateOrb();
   </script>
 </body>
 </html>
