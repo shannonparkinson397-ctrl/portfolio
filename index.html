@@ -33,17 +33,32 @@
 
   <noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 
-  <!-- Lenis smooth scroll — replaces default browser scroll feel -->
-  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <!-- Lenis smooth scroll — self-hosted, no external requests -->
+  <script src="/lenis.min.js"></script>
 
-  <!-- Fonts: Bunny (GDPR-safe) + Fontshare + Google Mono -->
+  <!-- Fonts: Bunny (EU/GDPR) + Fontshare + JetBrains Mono self-hosted -->
   <link rel="preconnect" href="https://fonts.bunny.net">
   <link rel="preconnect" href="https://api.fontshare.com">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.bunny.net/css?family=plus-jakarta-sans:400,500,600&display=swap" rel="stylesheet">
   <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,400&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'JetBrains Mono';
+      font-style: normal;
+      font-weight: 400;
+      font-display: swap;
+      src: url('/fonts/jetbrains-mono-latin-400-normal.woff2') format('woff2'),
+           url('/fonts/jetbrains-mono-cyrillic-400-normal.woff2') format('woff2');
+    }
+    @font-face {
+      font-family: 'JetBrains Mono';
+      font-style: normal;
+      font-weight: 500;
+      font-display: swap;
+      src: url('/fonts/jetbrains-mono-latin-500-normal.woff2') format('woff2'),
+           url('/fonts/jetbrains-mono-cyrillic-500-normal.woff2') format('woff2');
+    }
+  </style>
 
   <style>
     :root {
@@ -500,6 +515,7 @@
       Bogdan Lab
     </a>
     <span class="nav-badge">AVAILABLE</span>
+    <a href="https://t.me/bogdan_sys" class="nav-cta" target="_blank" rel="noopener">Telegram</a>
   </div>
 </nav>
 
@@ -516,6 +532,7 @@
           Запуск за 7–14 дней. Результат измеряется в часах и деньгах.
         </p>
         <div class="hero-actions">
+          <a href="https://t.me/bogdan_sys" class="btn-primary" target="_blank" rel="noopener">Написать в Telegram →</a>
           <a href="#cases" class="btn-secondary">Смотреть кейсы</a>
         </div>
       </div>
@@ -742,6 +759,9 @@
       <div class="section-label">// contact</div>
       <h2 class="cta-title">Есть задача?<br>Давайте разберёмся.</h2>
       <p class="cta-sub">Напишите кратко что происходит — отвечу в течение дня. Первый звонок бесплатно.</p>
+      <div class="cta-row" style="margin-top:32px">
+        <a href="https://t.me/bogdan_sys" class="btn-primary" target="_blank" rel="noopener">Написать в Telegram →</a>
+      </div>
     </div>
   </div>
 </div>
