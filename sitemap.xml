@@ -49,18 +49,6 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://bogdan-lab.ru/consent.html</loc>
-    <lastmod>2026-03-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://bogdan-lab.ru/consent-en.html</loc>
-    <lastmod>2026-03-12</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-  <url>
     <loc>https://bogdan-lab.ru/cookies.html</loc>
     <lastmod>2026-03-12</lastmod>
     <changefreq>monthly</changefreq>
